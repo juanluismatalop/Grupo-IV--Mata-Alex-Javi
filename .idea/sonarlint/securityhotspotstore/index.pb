@@ -15,14 +15,10 @@ E
 .src/main/java/org/example/demo/model/Main.java,b/a/ba9fad019cfd33c92b80928a671fa12e7b0e36e8
 `
 0src/main/java/org/example/demo/model/MainDB.java,c/e/ce341520c369ab2ec97d22b3c7da7614a31cfb03
-a
-1src/main/java/org/example/demo/model/Usuario.java,e/5/e5bfbb064cbb3ad3b333b2740a5380fc9abda263
 c
 3src/main/java/org/example/demo/model/UsuarioDB.java,7/b/7ba4983387e3642fe24564044965985a6f4af4e5
 i
 9src/main/java/org/example/demo/model/SetUpConnection.java,a/a/aaeea02ed4167e0d811f7eb2b44790b8e4639823
-e
-5src/main/java/org/example/demo/model/dao/Usuario.java,2/8/28bff1946fe43dc6474aeb0e8f09d9b74b95a1de
 l
 <src/main/java/org/example/demo/model/daoUsuario/Usuario.java,6/b/6be23d0125760adc9d77645b7d233d84b7111e60
 o
@@ -40,3 +36,7 @@ Q.idea/sonarlint/securityhotspotstore/a/5/a5cc2925ca8258af241be7e5b0381edf302663
 Q.idea/sonarlint/securityhotspotstore/6/b/6be23d0125760adc9d77645b7d233d84b7111e60,c/c/cc3deaa9f719cbf7b1bbcb1d05a838e9c104c63f
 
 Q.idea/sonarlint/securityhotspotstore/2/d/2d6ff418d543a7fae2d799540cd42a6231cfcb07,d/1/d1177d165e56a29fc523ad424e0921f78d0b66d7
+X
+(src/main/java/org/example/demo/Main.java,8/d/8d1dcd165117506c5ec54ff46b41f970f998f9fe
+
+Q.idea/sonarlint/securityhotspotstore/8/d/8d1dcd165117506c5ec54ff46b41f970f998f9fe,7/e/7ea49c791d8f198a190be64d93bfe3e08c409715
