@@ -1,0 +1,16 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8º¦ñ‡ï1
+g	java:S112!"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8º¦ñ‡ï1
+g	java:S1121"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8º¦ñ‡ï1
+_
+java:S1163!"=Refactor this code to not throw exceptions in finally blocks.(Ò‚Òéüÿÿÿÿ8¼¦ñ‡ï1
+V
+java:S1143!"4Remove this throw statement from this finally block.(Ò‚Òéüÿÿÿÿ8¼¦ñ‡ï1
+=
+java:S1659" Declare "db" on a separate line.(½¾¨ÿ8Ô¦ñ‡ï1
+X	java:S125"<This block of commented-out lines of code should be removed.(úê×Ù8Ô¦ñ‡ï1
+L	java:S106+"+Replace this use of System.out by a logger.(‰õÿ˜şÿÿÿÿ8ê¦ñ‡ï1
+G	java:S106,"+Replace this use of System.out by a logger.(ûÈ›Ï8ê¦ñ‡ï1
+G	java:S106-"+Replace this use of System.out by a logger.(÷Ï©»8ê¦ñ‡ï1
+G	java:S106."+Replace this use of System.out by a logger.(ÓÅÊ¬8ë¦ñ‡ï1
+G	java:S106/"+Replace this use of System.out by a logger.(­äèù8ë¦ñ‡ï1
