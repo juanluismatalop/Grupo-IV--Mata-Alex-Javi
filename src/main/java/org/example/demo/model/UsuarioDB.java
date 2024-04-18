@@ -15,6 +15,8 @@ public class UsuarioDB {
         connection = SetUpConnection.getInstance().getConnection();;
     }
 
+    //Añadir personas
+
     public boolean insertUsuario (Usuario usuario) throws SQLException {
         String sql = " INSERT INTO usuario VALUES ('" + usuario.getTelefono() + "', '"
                 + usuario.getEmail() + "'," + usuario.getContrasenna() + "', '"
@@ -26,6 +28,8 @@ public class UsuarioDB {
         return result != 0;
     }
 
+    //Borrar personas
+
     public boolean deleteUsuario (int Telefono) throws SQLException {
         String sql = "DELETE FROM usuario WHERE Telefono = '" + Telefono + "';";
 
@@ -36,5 +40,7 @@ public class UsuarioDB {
     }
 
 
+
+    //Mas metodos crud...
 
 }
