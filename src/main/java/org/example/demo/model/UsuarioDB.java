@@ -82,10 +82,10 @@ public class UsuarioDB {
 
     }
 
-    public Usuario getMobileByTelefonoEnhaced (String Telefono) throws SQLException {
+    public Usuario getMobileByTelefonoEnhaced (int Telefono) throws SQLException {
         String sql = "SELECT * FROM usuario WHERE Telefono = ?;";
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, Telefono);
+        statement.setInt(1, Telefono);
         ResultSet resultSet =  statement.executeQuery();
         Usuario usuario = null;
         while (resultSet.next()) {
@@ -95,11 +95,10 @@ public class UsuarioDB {
             String NOMBRE_COMPLETO = resultSet.getString("NOMBRE_COMPLETO");
             String direccion = resultSet.getString("Direccion");
 
-            usuario = new Usuario(email, contrasenna, NOMBRE_COMPLETO, direccion);
+            usuario = new Usuario(Telefono, email, contrasenna, NOMBRE_COMPLETO, direccion);
 
         }
         return usuario;
     }
 
-    //Mas metodos crud...
 }
