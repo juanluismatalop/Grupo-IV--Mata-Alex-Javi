@@ -69,7 +69,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 
     @Override
     public boolean updateUsuario(Usuario usuario) throws SQLException {
-        String sql = "UPDATE USUARIO SET " + usuario.getEmail() + ", " + usuario.getContrasenna() + ", " + usuario.getNOMBRE_COMPLETO() +", " + usuario.getDireccion() + " WHERE Telefono = " + Telefono + ";";
+        String sql = "UPDATE USUARIO SET " + usuario.getEmail() + ", " + usuario.getContrasenna() + ", " + usuario.getNOMBRE_COMPLETO() +", " + usuario.getDireccion() + " WHERE Telefono = " + usuario.getTelefono() + ";";
         Statement statement = connection.createStatement();
         int result = statement.executeUpdate(sql);
         return  result != 0;
