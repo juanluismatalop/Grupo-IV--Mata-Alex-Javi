@@ -5,9 +5,10 @@ import java.util.List;
 
 public interface UsuarioDAO {
     List<Usuario> getUsuario() throws SQLException;
-    Usuario getUsuarioByTelefono(int telefono);
-    boolean insertUsuario(Usuario usuario);
-    boolean deleteUsuarioByTelefono(int telefono);
-    boolean updateUsuario(Usuario usuario);
+    Usuario getUsuarioByTelefono(Usuario usuario) throws SQLException;
+
+    boolean insertUsuario(Usuario usuario) throws SQLException;
+    boolean deleteUsuarioByTelefono(int telefono) throws SQLException;
+    boolean updateUsuario(Usuario usuario) throws SQLException;
 
 }

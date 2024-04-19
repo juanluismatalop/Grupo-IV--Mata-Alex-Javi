@@ -35,22 +35,43 @@ public class UsuarioDAOImpl implements UsuarioDAO{
     }
 
     @Override
-    public Usuario getUsuarioByTelefono(int telefono) {
-        return null;
+    public Usuario getUsuarioByTelefono(Usuario usuario) throws SQLException {
+        String sql = "SELECT * FROM USUSARIO WHERE Telefono = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,usuario.getTelefono());
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            int Telefono = resultSet.getInt("Telefono");
+            String Email = resultSet.getString("Email");
+            String Contrasenna = resultSet.getString("Contrasenna");
+            String NOMBRE_COMPLETO = resultSet.getString("NOMBRE_COMPLETO");
+            String Direccion = resultSet.getString("Direccion");
+            usuario = new Usuario(Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion);
+        }
+        return usuario;
     }
 
     @Override
-    public boolean insertUsuario(Usuario usuario) {
-        return false;
+    public boolean insertUsuario(Usuario usuario) throws SQLException {
+        String sql = " INSERT INTO USUARIO VALUES(" + usuario.getTelefono() +" ," + usuario.getEmail() + " ," + usuario.getContrasenna() + " ," + usuario.getNOMBRE_COMPLETO() + " ," + usuario.getDireccion() + ");";
+        Statement statement = connection.createStatement();
+        int result = statement.executeUpdate(sql);
+        return result != 0;
     }
 
     @Override
-    public boolean deleteUsuarioByTelefono(int telefono) {
-        return false;
+    public boolean deleteUsuarioByTelefono(int telefono) throws SQLException {
+        String sql = "DELETE FROM USUARIO WHERE Telefono = " + telefono +";";
+        Statement statement = connection.createStatement();
+        int result = statement.executeUpdate(sql);
+        return  result != 0;
     }
 
     @Override
-    public boolean updateUsuario(Usuario usuario) {
-        return false;
+    public boolean updateUsuario(Usuario usuario) throws SQLException {
+        String sql = "UPDATE USUARIO SET " + usuario.getEmail() + ", " + usuario.getContrasenna() + ", " + usuario.getNOMBRE_COMPLETO() +", " + usuario.getDireccion() + " WHERE Telefono = " + Telefono + ";";
+        Statement statement = connection.createStatement();
+        int result = statement.executeUpdate(sql);
+        return  result != 0;
     }
 }
