@@ -19,8 +19,8 @@ public class UsuarioDB {
 
     public boolean insertUsuario(Usuario usuario) throws SQLException {
         String sql = " INSERT INTO usuario VALUES ('" + usuario.getTelefono() + "', '"
-                + usuario.getEmail() + "'," + usuario.getContrasenna() + "', '"
-                + usuario.getNOMBRE_COMPLETO() + "', " + usuario.getDireccion() + " );";
+                + usuario.getEmail() + "','" + usuario.getContrasenna() + "', '"
+                + usuario.getNOMBRE_COMPLETO() + "', '" + usuario.getDireccion() + "' );";
 
         System.out.printf("SENTENCIA A EJECUTAR: %s%n", sql);
         Statement statement = connection.createStatement();
@@ -41,8 +41,7 @@ public class UsuarioDB {
 
 
     public boolean updateUsuarioPorTelefono (Usuario usuario) throws SQLException {
-        String sql = "UPDATE usuario SET email = '" + 1 + "', direccion = '" + 2 + "', contrasenna = '" + 3 + "', " +
-                "nombre = '" + 4 + "' WHERE telefono = '" + 5 + "'";
+        String sql = "UPDATE usuario SET email = ?, direccion = ?, contrasenna = ?, nombre = ? WHERE telefono = ? ;";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)){
 
