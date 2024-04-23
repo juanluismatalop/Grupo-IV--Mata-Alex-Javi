@@ -1,6 +1,6 @@
 package org.example.demo.model;
 
-import org.example.demo.model.daoUsuario.Usuario;
+import org.example.demo.model.dao.daoUsuario.Usuario;
 
 import java.io.IOException;
 import java.sql.*;

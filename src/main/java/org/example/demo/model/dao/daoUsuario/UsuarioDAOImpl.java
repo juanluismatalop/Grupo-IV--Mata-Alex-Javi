@@ -1,4 +1,4 @@
-package org.example.demo.model.daoUsuario;
+package org.example.demo.model.dao.daoUsuario;
 
 import org.example.demo.model.SetUpConnection;
 

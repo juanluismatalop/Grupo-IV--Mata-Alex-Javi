@@ -1,11 +1,9 @@
 package org.example.demo.model;
 
-import org.example.demo.model.daoUsuario.Usuario;
-import org.example.demo.model.daoUsuario.UsuarioDAO;
+import org.example.demo.model.dao.daoUsuario.Usuario;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 public class MainDB {
 
