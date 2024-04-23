@@ -1,7 +1,6 @@
-package org.example.demo.model.daoApartamenta;
+package org.example.demo.model.dao.daoApartamento;
 
 import org.example.demo.model.SetUpConnection;
-import org.example.demo.model.daoUsuario.Usuario;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,12 +19,12 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
     }
 
     @Override
-    public List<Usuario> getApartamento() throws SQLException {
+    public List<Apartamento> getApartamento() throws SQLException {
         return null;
     }
 
     @Override
-    public Usuario getApartamentoYID(Apartamento apartamento) throws SQLException {
+    public Apartamento getApartamentoYID(Apartamento apartamento) throws SQLException {
         return null;
     }
 
