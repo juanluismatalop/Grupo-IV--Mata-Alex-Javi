@@ -3,10 +3,7 @@ package org.example.demo.model.dao.daoApartamento;
 import org.example.demo.model.SetUpConnection;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 public class ApartamentoDAOImpl implements ApartamentoDAO {
@@ -25,21 +22,50 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
 
     @Override
     public Apartamento getApartamentoYID(Apartamento apartamento) throws SQLException {
+        String sql = "SELECT * FROM APARTAMENTO WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, apartamento.getId_alojamiento());
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String nombre = resultSet.getString("nombre");
+                    return new Apartamento(apartamento.getId_alojamiento(), apartamento.getTipoHabitacion(), nombre, apartamento.getNumero_estrellas()/*, otros atributos */);
+                }
+            }
+        }
         return null;
     }
 
     @Override
     public boolean insertApartamento(Apartamento apartamento) throws SQLException {
-        return false;
+        String sql = "INSERT INTO APARTAMENTO (nombre /*, otros atributos */) VALUES (?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, apartamento.getNombre());
+            // Establecer los demás parámetros del PreparedStatement
+            int result = preparedStatement.executeUpdate();
+            return result != 0;
+        }
     }
 
     @Override
     public boolean deleteApartamentoPorID(int id_alojamiento) throws SQLException {
-        return false;
+        String sql = "DELETE FROM APARTAMENTO WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id_alojamiento);
+            int result = preparedStatement.executeUpdate();
+            return result != 0;
+        }
     }
 
     @Override
     public boolean updateUsuario(Apartamento apartamento) throws SQLException {
-        return false;
+        String sql = "UPDATE APARTAMENTO SET nombre = ? /*, otros atributos */ WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, apartamento.getNombre());
+            // Establecer los demás parámetros del PreparedStatement
+            preparedStatement.setInt(2, apartamento.getId_alojamiento());
+            int result = preparedStatement.executeUpdate();
+            return result != 0;
+        }
+
     }
 }
