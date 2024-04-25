@@ -31,8 +31,7 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
                     return new Apartamento(apartamento.getId_alojamiento(), apartamento.getTipoHabitacion(), nombre, apartamento.getNumero_estrellas()/*, otros atributos */);
                 }
             }
-        }
-        return null;
+        }return null;
     }
 
     @Override
