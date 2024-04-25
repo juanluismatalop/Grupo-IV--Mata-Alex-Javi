@@ -6,13 +6,13 @@ public class Apartamento {
     private int id_alojamiento;
     private TipoHabitacion tipoHabitacion;
     private String nombre;
-    private int numero_estrellas;
+    private double Distancia_Centro_Km;
 
-    public Apartamento(int id_alojamiento, TipoHabitacion tipoHabitacion, java.lang.String nombre, int numero_estrellas) {
+    public Apartamento(int id_alojamiento, TipoHabitacion tipoHabitacion, String nombre, double distancia_Centro_Km) {
         this.id_alojamiento = id_alojamiento;
         this.tipoHabitacion = tipoHabitacion;
         this.nombre = nombre;
-        this.numero_estrellas = numero_estrellas;
+        Distancia_Centro_Km = distancia_Centro_Km;
     }
 
     public int getId_alojamiento() {
@@ -39,17 +39,17 @@ public class Apartamento {
         this.nombre = nombre;
     }
 
-    public int getNumero_estrellas() {
-        return numero_estrellas;
+    public double getDistancia_Centro_Km() {
+        return Distancia_Centro_Km;
     }
 
-    public void setNumero_estrellas(int numero_estrellas) {
-        this.numero_estrellas = numero_estrellas;
+    public void setDistancia_Centro_Km(double distancia_Centro_Km) {
+        Distancia_Centro_Km = distancia_Centro_Km;
     }
 
     @Override
     public String toString() {
-        return String.format("%d,%s,%s,%d",id_alojamiento, tipoHabitacion, nombre, numero_estrellas);
+        return String.format("%d,%s,%s,%f",id_alojamiento, tipoHabitacion, nombre, Distancia_Centro_Km);
     }
     @Override
     public boolean equals(Object o) {
