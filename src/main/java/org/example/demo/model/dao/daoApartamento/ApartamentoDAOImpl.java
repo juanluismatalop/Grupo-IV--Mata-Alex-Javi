@@ -37,12 +37,24 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
 
     @Override
     public Apartamento getApartamentoYID(Apartamento apartamento) throws SQLException {
-
-        return null;
+        String sql = "SELECT * FROM AP_TURISTICOs WHERE Id_Alojamiento = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,apartamento.getId_alojamiento());
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            int id_alojamiento = resultSet.getInt("Id_Alojamiento");
+            String nombre = resultSet.getString("Nombre");
+            double distancia_Centro_Km = resultSet.getDouble("Distancia_Centro_Km");
+            apartamento = new Apartamento(id_alojamiento, nombre, distancia_Centro_Km);
+        }
+        return apartamento;
     }
 
     @Override
     public boolean insertApartamento(Apartamento apartamento) throws SQLException {
+        String sql = "INSERT INTO AP_TURISTICOS VALUES(?, ?, ?);";
+        preparedStatement = connection.prepareStatement(sql);
+
         return false;
     }
 
