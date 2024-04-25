@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloController {
+public class LoginController {
 
     private Stage stage;
     private Scene scene;
