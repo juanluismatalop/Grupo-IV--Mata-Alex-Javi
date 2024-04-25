@@ -20,11 +20,24 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
 
     @Override
     public List<Apartamento> getApartamento() throws SQLException {
-        return null;
+        List<Apartamento> apartamentos = new ArrayList<>();
+        String sql = "SELECT * FROM AP_TURISTICOS;";
+        statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        Apartamento apartamento1 = null;
+        while (resultSet.next()){
+            int id_alojamiento = resultSet.getInt("Id_Alojamiento");
+            String nombre = resultSet.getString("Nombre");
+            double distancia_Centro_Km = resultSet.getDouble("Distancia_Centro_Km");
+            apartamento1 = new Apartamento(id_alojamiento, nombre, distancia_Centro_Km);
+            apartamentos.add(apartamento1);
+        }
+        return apartamentos;
     }
 
     @Override
     public Apartamento getApartamentoYID(Apartamento apartamento) throws SQLException {
+
         return null;
     }
 
