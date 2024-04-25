@@ -40,7 +40,6 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
         String sql = "INSERT INTO APARTAMENTO (nombre /*, otros atributos */) VALUES (?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, apartamento.getNombre());
-            // Establecer los demás parámetros del PreparedStatement
             int result = preparedStatement.executeUpdate();
             return result != 0;
         }
@@ -61,7 +60,6 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
         String sql = "UPDATE APARTAMENTO SET nombre = ? /*, otros atributos */ WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, apartamento.getNombre());
-            // Establecer los demás parámetros del PreparedStatement
             preparedStatement.setInt(2, apartamento.getId_alojamiento());
             int result = preparedStatement.executeUpdate();
             return result != 0;
