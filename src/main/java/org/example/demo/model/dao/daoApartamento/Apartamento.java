@@ -4,13 +4,11 @@ import java.util.Objects;
 
 public class Apartamento {
     private int id_alojamiento;
-    private TipoHabitacion tipoHabitacion;
     private String nombre;
     private double Distancia_Centro_Km;
 
-    public Apartamento(int id_alojamiento, TipoHabitacion tipoHabitacion, String nombre, double distancia_Centro_Km) {
+    public Apartamento(int id_alojamiento, String nombre, double distancia_Centro_Km) {
         this.id_alojamiento = id_alojamiento;
-        this.tipoHabitacion = tipoHabitacion;
         this.nombre = nombre;
         Distancia_Centro_Km = distancia_Centro_Km;
     }
@@ -21,14 +19,6 @@ public class Apartamento {
 
     public void setId_alojamiento(int id_alojamiento) {
         this.id_alojamiento = id_alojamiento;
-    }
-
-    public TipoHabitacion getTipoHabitacion() {
-        return tipoHabitacion;
-    }
-
-    public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {
-        this.tipoHabitacion = tipoHabitacion;
     }
 
     public String getNombre() {
@@ -49,7 +39,7 @@ public class Apartamento {
 
     @Override
     public String toString() {
-        return String.format("%d,%s,%s,%f",id_alojamiento, tipoHabitacion, nombre, Distancia_Centro_Km);
+        return String.format("%d,%s,%s,%f",id_alojamiento, nombre, Distancia_Centro_Km);
     }
     @Override
     public boolean equals(Object o) {
