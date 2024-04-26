@@ -8,10 +8,10 @@ import java.util.Objects;
 public class Reservas {
     private int id_alojamiento;
     private int telefono;
-    private LocalDate fechaEntrada;
-    private LocalDate fechaSalida;
+    private String fechaEntrada;
+    private String fechaSalida;
 
-    public Reservas(int id_alojamiento, int telefono, LocalDate fechaEntrada, LocalDate fechaSalida) {
+    public Reservas(int id_alojamiento, int telefono, String fechaEntrada, String fechaSalida) {
         this.id_alojamiento = id_alojamiento;
         this.telefono = telefono;
         this.fechaEntrada = fechaEntrada;
@@ -34,19 +34,19 @@ public class Reservas {
         this.telefono = telefono;
     }
 
-    public LocalDate getFechaEntrada() {
+    public String getFechaEntrada() {
         return fechaEntrada;
     }
 
-    public void setFechaEntrada(LocalDate fechaEntrada) {
+    public void setFechaEntrada(String fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
-    public LocalDate getFechaSalida() {
+    public String getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(LocalDate fechaSalida) {
+    public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 

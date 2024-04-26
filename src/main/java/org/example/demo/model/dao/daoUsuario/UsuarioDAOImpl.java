@@ -53,25 +53,36 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 
     @Override
     public boolean insertUsuario(Usuario usuario) throws SQLException {
-        String sql = " INSERT INTO USUARIO VALUES(" + usuario.getTelefono() +" ," + usuario.getEmail() + " ," + usuario.getContrasenna() + " ," + usuario.getNOMBRE_COMPLETO() + " ," + usuario.getDireccion() + ");";
-        Statement statement = connection.createStatement();
-        int result = statement.executeUpdate(sql);
-        return result != 0;
+        String sql = "INSERT INTO AP_TURISTICOS (Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion) VALUES (?, ?, ?, ?, ?);";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, usuario.getTelefono());
+        preparedStatement.setString(2, usuario.getEmail());
+        preparedStatement.setString(3, usuario.getContrasenna());
+        preparedStatement.setString(4, usuario.getNOMBRE_COMPLETO());
+        preparedStatement.setString(5, usuario.getDireccion());
+        int rowsInserted = preparedStatement.executeUpdate();
+        return rowsInserted > 0;
     }
 
     @Override
     public boolean deleteUsuarioByTelefono(int telefono) throws SQLException {
-        String sql = "DELETE FROM USUARIO WHERE Telefono = " + telefono +";";
-        Statement statement = connection.createStatement();
-        int result = statement.executeUpdate(sql);
-        return  result != 0;
+        String sql = "DELETE FROM USUARIO WHERE Telefono = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, telefono);
+        int rowsDeleted = preparedStatement.executeUpdate();
+        return rowsDeleted > 0;
     }
 
     @Override
     public boolean updateUsuario(Usuario usuario) throws SQLException {
-        String sql = "UPDATE USUARIO SET " + usuario.getEmail() + ", " + usuario.getContrasenna() + ", " + usuario.getNOMBRE_COMPLETO() +", " + usuario.getDireccion() + " WHERE Telefono = " + usuario.getTelefono() + ";";
-        Statement statement = connection.createStatement();
-        int result = statement.executeUpdate(sql);
-        return  result != 0;
+        String sql = "UPDATE USUARIO SET Telefono = ?, Email = ?, Contrasenna = ?, NOMBRE_COMPLETO = ?, Direccion = ? WHERE Telefono = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, usuario.getTelefono());
+        preparedStatement.setString(2, usuario.getEmail());
+        preparedStatement.setString(3, usuario.getContrasenna());
+        preparedStatement.setString(4, usuario.getNOMBRE_COMPLETO());
+        preparedStatement.setString(5, usuario.getDireccion());
+        int rowsUpdated = preparedStatement.executeUpdate();
+        return rowsUpdated > 0;
     }
 }

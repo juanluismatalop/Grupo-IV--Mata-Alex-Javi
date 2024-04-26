@@ -33,7 +33,6 @@ CREATE INDEX nombaloj ON ALOJAMIENTOS(Nombre);
 DROP TABLE IF EXISTS RESERVA;
 CREATE TABLE RESERVA (
     Id_Alojamiento NUMBER,
-    Email VARCHAR2(50),
     Telefono NUMBER,
     Fecha_Entrada DATETIME NOT NULL,
     Fecha_Salida DATETIME NOT NULL,

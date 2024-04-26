@@ -22,14 +22,13 @@ public class HotelDAOImpl implements HotelDAO {
         String sql = "SELECT * FROM HOTELES;";
         statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
-        Hotel hotel1 = null;
-        while (resultSet.next()) {
-            int id_alojamiento = resultSet.getInt("Id_Alojamiento");
-            String tipo_habitacion = resultSet.getString("Tipo_habitacion");
-            String nombre = resultSet.getString("Nombre");
-            int numero_estrellas = resultSet.getInt("Numero_Estrellas");
-            hotel1 = new Hotel(id_alojamiento, tipo_habitacion, nombre, numero_estrellas);
-            hoteles.add(hotel1);
+        while (resultSet.next()){
+            int Id_Alojamiento = resultSet.getInt("Id_Alojamiento");
+            String Tipo_Habitacion = resultSet.getString("Tipo_Habitacion");
+            String Nombre = resultSet.getString("Nombre");
+            int Numero_Estrellas = resultSet.getInt("Numero_Estrellas");
+            Hotel hotel = new Hotel(Id_Alojamiento, Tipo_Habitacion, Nombre, Numero_Estrellas);
+            hoteles.add(hotel);
         }
         return hoteles;
     }
@@ -38,33 +37,48 @@ public class HotelDAOImpl implements HotelDAO {
     public Hotel getHotelByID(Hotel hotel) throws SQLException {
         String sql = "SELECT * FROM HOTELES WHERE Id_Alojamiento = ?;";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1,hotel.getId_Alojamiento());
+        preparedStatement.setInt(1, hotel.getId_Alojamiento());
         ResultSet resultSet = preparedStatement.executeQuery();
-        while (resultSet.next()){
-            int id_alojamiento = resultSet.getInt("Id_Alojamiento");
-            String tipo_habitacion = resultSet.getString("Tipo_habitacion");
-            String nombre = resultSet.getString("Nombre");
-            int numero_estrellas = resultSet.getInt("Numero_Estrellas");
-            hotel = new Hotel(id_alojamiento, tipo_habitacion, nombre, numero_estrellas);
+        if (resultSet.next()){
+            int Id_Alojamiento = resultSet.getInt("Id_Alojamiento");
+            String Tipo_Habitacion = resultSet.getString("Tipo_Habitacion");
+            String Nombre = resultSet.getString("Nombre");
+            int Numero_Estrellas = resultSet.getInt("Numero_Estrellas");
+            hotel = new Hotel(Id_Alojamiento, Tipo_Habitacion, Nombre, Numero_Estrellas);
         }
         return hotel;
     }
 
     @Override
-    public boolean insertHotel(Hotel hotel) throws SQLException {
-        String sql = "INSERT INTO HOTELES VALUES(?, ?, ?, ?);";
+    public boolean insertHote(Hotel hotel) throws SQLException {
+        String sql = "INSERT INTO HOTELES (Id_Alojamiento, Tipo_Habitacion, Nombre, Numero_Estrellas) VALUES (?, ?, ?,?);";
         preparedStatement = connection.prepareStatement(sql);
-
-        return false;
+        preparedStatement.setInt(1, hotel.getId_Alojamiento());
+        preparedStatement.setString(2, hotel.getTipo_habitacion());
+        preparedStatement.setString(3, hotel.getNombre());
+        preparedStatement.setInt(4,hotel.getNumeroEstrellas());
+        int rowsInserted = preparedStatement.executeUpdate();
+        return rowsInserted > 0;
     }
 
     @Override
     public boolean deleteHotelById(int Id_Alojamiento) throws SQLException {
-        return false;
+        String sql = "DELETE FROM HOTELES WHERE Id_Alojamiento = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, Id_Alojamiento);
+        int rowsDeleted = preparedStatement.executeUpdate();
+        return rowsDeleted > 0;
     }
 
     @Override
     public boolean updateHotel(Hotel hotel) throws SQLException {
-        return false;
+        String sql = "UPDATE HOTELES SET Nombre = ?, Distancia_Centro_Km = ? WHERE Id_Alojamiento = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, hotel.getId_Alojamiento());
+        preparedStatement.setString(2, hotel.getTipo_habitacion());
+        preparedStatement.setString(3, hotel.getNombre());
+        preparedStatement.setInt(4,hotel.getNumeroEstrellas());
+        int rowsUpdated = preparedStatement.executeUpdate();
+        return rowsUpdated > 0;
     }
 }
