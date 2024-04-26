@@ -24,24 +24,23 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
         String sql = "SELECT * FROM AP_TURISTICOS;";
         statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
-        Apartamento apartamento1 = null;
-        while (resultSet.next()){
+        while (resultSet.next()) {
             int id_alojamiento = resultSet.getInt("Id_Alojamiento");
             String nombre = resultSet.getString("Nombre");
             double distancia_Centro_Km = resultSet.getDouble("Distancia_Centro_Km");
-            apartamento1 = new Apartamento(id_alojamiento, nombre, distancia_Centro_Km);
-            apartamentos.add(apartamento1);
+            Apartamento apartamento = new Apartamento(id_alojamiento, nombre, distancia_Centro_Km);
+            apartamentos.add(apartamento);
         }
         return apartamentos;
     }
 
     @Override
     public Apartamento getApartamentoYID(Apartamento apartamento) throws SQLException {
-        String sql = "SELECT * FROM AP_TURISTICOs WHERE Id_Alojamiento = ?;";
+        String sql = "SELECT * FROM AP_TURISTICOS WHERE Id_Alojamiento = ?;";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1,apartamento.getId_alojamiento());
+        preparedStatement.setInt(1, apartamento.getId_alojamiento());
         ResultSet resultSet = preparedStatement.executeQuery();
-        while (resultSet.next()){
+        if (resultSet.next()) {
             int id_alojamiento = resultSet.getInt("Id_Alojamiento");
             String nombre = resultSet.getString("Nombre");
             double distancia_Centro_Km = resultSet.getDouble("Distancia_Centro_Km");
@@ -52,19 +51,32 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
 
     @Override
     public boolean insertApartamento(Apartamento apartamento) throws SQLException {
-        String sql = "INSERT INTO AP_TURISTICOS VALUES(?, ?, ?);";
+        String sql = "INSERT INTO AP_TURISTICOS (Id_Alojamiento, Nombre, Distancia_Centro_Km) VALUES (?, ?, ?);";
         preparedStatement = connection.prepareStatement(sql);
-
-        return false;
+        preparedStatement.setInt(1, apartamento.getId_alojamiento());
+        preparedStatement.setString(2, apartamento.getNombre());
+        preparedStatement.setDouble(3, apartamento.getDistancia_Centro_Km());
+        int rowsInserted = preparedStatement.executeUpdate();
+        return rowsInserted > 0;
     }
 
     @Override
     public boolean deleteApartamentoPorID(int id_alojamiento) throws SQLException {
-        return false;
+        String sql = "DELETE FROM AP_TURISTICOS WHERE Id_Alojamiento = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id_alojamiento);
+        int rowsDeleted = preparedStatement.executeUpdate();
+        return rowsDeleted > 0;
     }
 
     @Override
-    public boolean updateUsuario(Apartamento apartamento) throws SQLException {
-        return false;
+    public boolean updateApartamento(Apartamento apartamento) throws SQLException {
+        String sql = "UPDATE AP_TURISTICOS SET Nombre = ?, Distancia_Centro_Km = ? WHERE Id_Alojamiento = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, apartamento.getNombre());
+        preparedStatement.setDouble(2, apartamento.getDistancia_Centro_Km());
+        preparedStatement.setInt(3, apartamento.getId_alojamiento());
+        int rowsUpdated = preparedStatement.executeUpdate();
+        return rowsUpdated > 0;
     }
 }

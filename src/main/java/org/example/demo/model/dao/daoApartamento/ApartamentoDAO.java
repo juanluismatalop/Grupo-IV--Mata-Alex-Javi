@@ -9,5 +9,5 @@ public interface ApartamentoDAO {
 
     boolean insertApartamento(Apartamento apartamento) throws SQLException;
     boolean deleteApartamentoPorID(int id_alojamiento) throws SQLException;
-    boolean updateUsuario(Apartamento apartamento) throws SQLException;
+    boolean updateApartamento(Apartamento apartamento) throws SQLException;
 }
