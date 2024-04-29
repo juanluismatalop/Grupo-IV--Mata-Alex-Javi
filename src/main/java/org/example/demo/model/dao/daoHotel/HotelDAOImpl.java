@@ -50,6 +50,11 @@ public class HotelDAOImpl implements HotelDAO {
     }
 
     @Override
+    public boolean insertHotel(Hotel hotel) throws SQLException {
+        return false;
+    }
+
+
     public boolean insertHote(Hotel hotel) throws SQLException {
         String sql = "INSERT INTO HOTELES (Id_Alojamiento, Tipo_Habitacion, Nombre, Numero_Estrellas) VALUES (?, ?, ?,?);";
         preparedStatement = connection.prepareStatement(sql);
