@@ -3,22 +3,22 @@ package org.example.demo.model.dao.daoApartamento;
 import java.util.Objects;
 
 public class Apartamento {
-    private int id_alojamiento;
+    private int idAlojamiento;
     private String nombre;
-    private double Distancia_Centro_Km;
+    private double distanciaCentroKm;
 
-    public Apartamento(int id_alojamiento, String nombre, double distancia_Centro_Km) {
-        this.id_alojamiento = id_alojamiento;
+    public Apartamento(int idAlojamiento, String nombre, double distanciaCentroKm) {
+        this.idAlojamiento = idAlojamiento;
         this.nombre = nombre;
-        Distancia_Centro_Km = distancia_Centro_Km;
+        this.distanciaCentroKm = distanciaCentroKm;
     }
 
-    public int getId_alojamiento() {
-        return id_alojamiento;
+    public int getIdAlojamiento() {
+        return idAlojamiento;
     }
 
-    public void setId_alojamiento(int id_alojamiento) {
-        this.id_alojamiento = id_alojamiento;
+    public void setIdAlojamiento(int idAlojamiento) {
+        this.idAlojamiento = idAlojamiento;
     }
 
     public String getNombre() {
@@ -29,28 +29,28 @@ public class Apartamento {
         this.nombre = nombre;
     }
 
-    public double getDistancia_Centro_Km() {
-        return Distancia_Centro_Km;
+    public double getDistanciaCentroKm() {
+        return distanciaCentroKm;
     }
 
-    public void setDistancia_Centro_Km(double distancia_Centro_Km) {
-        Distancia_Centro_Km = distancia_Centro_Km;
+    public void setDistanciaCentroKm(double distanciaCentroKm) {
+        this.distanciaCentroKm = distanciaCentroKm;
     }
 
     @Override
     public String toString() {
-        return String.format("%d,%s,%s,%f",id_alojamiento, nombre, Distancia_Centro_Km);
+        return String.format("%d,%s,%s,%f", idAlojamiento, nombre, distanciaCentroKm);
     }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Apartamento apartamento = (Apartamento) o;
-        return Objects.equals(id_alojamiento, apartamento.id_alojamiento);
+        return Objects.equals(idAlojamiento, apartamento.idAlojamiento);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_alojamiento);
+        return Objects.hash(idAlojamiento);
     }
 }

@@ -11,22 +11,22 @@ import java.util.Objects;
  */
 public class Hotel {
 
-    private int Id_Alojamiento;
-    private String Tipo_habitacion;
+    private int IdAlojamiento;
+    private String TipoHabitacion;
     private String nombre;
     private int numeroEstrellas;
 
     /**
      * Constructor de la clase Hotel.
      *
-     * @param id_Alojamiento El identificador del alojamiento.
+     * @param idAlojamiento El identificador del alojamiento.
      * @param tipo_habitacion El tipo de habitación del hotel.
      * @param nombre El nombre del hotel.
      * @param numeroEstrellas El número de estrellas del hotel.
      */
-    public Hotel(int id_Alojamiento, String tipo_habitacion, String nombre, int numeroEstrellas) {
-        Id_Alojamiento = id_Alojamiento;
-        Tipo_habitacion = tipo_habitacion;
+    public Hotel(int idAlojamiento, String tipo_habitacion, String nombre, int numeroEstrellas) {
+        IdAlojamiento = idAlojamiento;
+        TipoHabitacion = tipo_habitacion;
         this.nombre = nombre;
         this.numeroEstrellas = numeroEstrellas;
     }
@@ -36,17 +36,17 @@ public class Hotel {
      *
      * @return identificador del alojamiento.
      */
-    public int getId_Alojamiento() {
-        return Id_Alojamiento;
+    public int getIdAlojamiento() {
+        return IdAlojamiento;
     }
 
     /**
      * Establece el identificador del alojamiento.
      *
-     * @param id_Alojamiento identificador del alojamiento.
+     * @param idAlojamiento identificador del alojamiento.
      */
-    public void setId_Alojamiento(int id_Alojamiento) {
-        Id_Alojamiento = id_Alojamiento;
+    public void setIdAlojamiento(int idAlojamiento) {
+        IdAlojamiento = idAlojamiento;
     }
 
     /**
@@ -54,17 +54,17 @@ public class Hotel {
      *
      * @return tipo de habitación del hotel.
      */
-    public String getTipo_habitacion() {
-        return Tipo_habitacion;
+    public String getTipoHabitacion() {
+        return TipoHabitacion;
     }
 
     /**
      * Establece el tipo de habitación del hotel.
      *
-     * @param tipo_habitacion  tipo de habitación del hotel.
+     * @param tipoHabitacion  tipo de habitación del hotel.
      */
-    public void setTipo_habitacion(String tipo_habitacion) {
-        Tipo_habitacion = tipo_habitacion;
+    public void setTipoHabitacion(String tipoHabitacion) {
+        TipoHabitacion = tipoHabitacion;
     }
 
     /**
@@ -110,7 +110,7 @@ public class Hotel {
      */
     @Override
     public String toString() {
-        return String.format("%d, %s, %s, %d", Id_Alojamiento, Tipo_habitacion, nombre, numeroEstrellas);
+        return String.format("%d, %s, %s, %d", IdAlojamiento, TipoHabitacion, nombre, numeroEstrellas);
     }
 
     /**
@@ -124,7 +124,7 @@ public class Hotel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Hotel hotel = (Hotel) o;
-        return Objects.equals(Id_Alojamiento, hotel.Id_Alojamiento);
+        return Objects.equals(IdAlojamiento, hotel.IdAlojamiento);
     }
 
     /**
@@ -134,6 +134,6 @@ public class Hotel {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(Id_Alojamiento);
+        return Objects.hash(IdAlojamiento);
     }
 }

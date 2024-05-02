@@ -62,7 +62,7 @@ public class HotelDAOImpl implements HotelDAO {
     public Hotel getHotelByID(Hotel hotel) throws SQLException {
         String sql = "SELECT * FROM HOTELES WHERE Id_Alojamiento = ?;";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, hotel.getId_Alojamiento());
+        preparedStatement.setInt(1, hotel.getIdAlojamiento());
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()){
             int Id_Alojamiento = resultSet.getInt("Id_Alojamiento");
@@ -85,8 +85,8 @@ public class HotelDAOImpl implements HotelDAO {
     public boolean insertHotel(Hotel hotel) throws SQLException {
         String sql = "INSERT INTO HOTELES (Id_Alojamiento, Tipo_Habitacion, Nombre, Numero_Estrellas) VALUES (?, ?, ?,?);";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, hotel.getId_Alojamiento());
-        preparedStatement.setString(2, hotel.getTipo_habitacion());
+        preparedStatement.setInt(1, hotel.getIdAlojamiento());
+        preparedStatement.setString(2, hotel.getTipoHabitacion());
         preparedStatement.setString(3, hotel.getNombre());
         preparedStatement.setInt(4,hotel.getNumeroEstrellas());
         int rowsInserted = preparedStatement.executeUpdate();
@@ -120,8 +120,8 @@ public class HotelDAOImpl implements HotelDAO {
     public boolean updateHotel(Hotel hotel) throws SQLException {
         String sql = "UPDATE HOTELES SET Nombre = ?, Distancia_Centro_Km = ? WHERE Id_Alojamiento = ?;";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, hotel.getId_Alojamiento());
-        preparedStatement.setString(2, hotel.getTipo_habitacion());
+        preparedStatement.setInt(1, hotel.getIdAlojamiento());
+        preparedStatement.setString(2, hotel.getTipoHabitacion());
         preparedStatement.setString(3, hotel.getNombre());
         preparedStatement.setInt(4,hotel.getNumeroEstrellas());
         int rowsUpdated = preparedStatement.executeUpdate();

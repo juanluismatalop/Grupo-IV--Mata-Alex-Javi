@@ -1,7 +1,6 @@
 package org.example.demo.model.dao.daoApartamento;
 
 import org.example.demo.model.SetUpConnection;
-import org.example.demo.model.dao.daoUsuario.Usuario;
 
 import java.io.IOException;
 import java.sql.*;
@@ -38,7 +37,7 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
     public Apartamento getApartamentoYID(Apartamento apartamento) throws SQLException {
         String sql = "SELECT * FROM AP_TURISTICOS WHERE Id_Alojamiento = ?;";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, apartamento.getId_alojamiento());
+        preparedStatement.setInt(1, apartamento.getIdAlojamiento());
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
             int id_alojamiento = resultSet.getInt("Id_Alojamiento");
@@ -53,9 +52,9 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
     public boolean insertApartamento(Apartamento apartamento) throws SQLException {
         String sql = "INSERT INTO AP_TURISTICOS (Id_Alojamiento, Nombre, Distancia_Centro_Km) VALUES (?, ?, ?);";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, apartamento.getId_alojamiento());
+        preparedStatement.setInt(1, apartamento.getIdAlojamiento());
         preparedStatement.setString(2, apartamento.getNombre());
-        preparedStatement.setDouble(3, apartamento.getDistancia_Centro_Km());
+        preparedStatement.setDouble(3, apartamento.getDistanciaCentroKm());
         int rowsInserted = preparedStatement.executeUpdate();
         return rowsInserted > 0;
     }
@@ -74,8 +73,8 @@ public class ApartamentoDAOImpl implements ApartamentoDAO {
         String sql = "UPDATE AP_TURISTICOS SET Nombre = ?, Distancia_Centro_Km = ? WHERE Id_Alojamiento = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, apartamento.getNombre());
-        preparedStatement.setDouble(2, apartamento.getDistancia_Centro_Km());
-        preparedStatement.setInt(3, apartamento.getId_alojamiento());
+        preparedStatement.setDouble(2, apartamento.getDistanciaCentroKm());
+        preparedStatement.setInt(3, apartamento.getIdAlojamiento());
         int rowsUpdated = preparedStatement.executeUpdate();
         return rowsUpdated > 0;
     }
