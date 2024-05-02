@@ -43,11 +43,11 @@ public class DAOReservasImpl implements DAOReservas {
         statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
         while (resultSet.next()) {
-            int Id_Alojamiento = resultSet.getInt("Id_Alojamiento");
+            int idAlojamiento = resultSet.getInt("Id_Alojamiento");
             int Telefono = resultSet.getInt("Telefono");
             String Fecha_Entrada = resultSet.getString("Fecha_Entrada");
             String Fecha_Salida = resultSet.getString("Fecha_Salida");
-            Reservas reserva = new Reservas(Id_Alojamiento, Telefono, Fecha_Entrada, Fecha_Salida);
+            Reservas reserva = new Reservas(idAlojamiento, Telefono, Fecha_Entrada, Fecha_Salida);
             reservas.add(reserva);
         }
         return reservas;
@@ -68,11 +68,11 @@ public class DAOReservasImpl implements DAOReservas {
         preparedStatement.setInt(2, reservas.getTelefono());
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
-            int Id_Alojamiento = resultSet.getInt("Id_Alojamiento");
+            int idAlojamiento = resultSet.getInt("Id_Alojamiento");
             int Telefono = resultSet.getInt("Telefono");
             String Fecha_Entrada = resultSet.getString("Fecha_Entrada");
             String Fecha_Salida = resultSet.getString("Fecha_Salida");
-            reservas = new Reservas(Id_Alojamiento, Telefono, Fecha_Entrada, Fecha_Salida);
+            reservas = new Reservas(idAlojamiento, Telefono, Fecha_Entrada, Fecha_Salida);
         }
         return reservas;
     }
@@ -100,15 +100,15 @@ public class DAOReservasImpl implements DAOReservas {
      * Elimina una reserva de alojamiento por teléfono y ID de alojamiento.
      *
      * @param telefono El número de teléfono asociado a la reserva.
-     * @param id_alojamiento El ID del alojamiento asociado a la reserva.
+     * @param idAlojamiento El ID del alojamiento asociado a la reserva.
      * @return true si la eliminación fue exitosa, false de lo contrario.
      * @throws SQLException Si ocurre un error al acceder a la base de datos.
      */
     @Override
-    public boolean deleteReservaPorTelefonoEIdAlojamiento(int telefono, int id_alojamiento) throws SQLException {
+    public boolean deleteReservaPorTelefonoEIdAlojamiento(int telefono, int idAlojamiento) throws SQLException {
         String sql = "DELETE FROM RESERVAS WHERE Id_Alojamiento = ? AND Telefono = ?;";
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, id_alojamiento);
+        preparedStatement.setInt(1, idAlojamiento);
         preparedStatement.setInt(2, telefono);
         int rowsDeleted = preparedStatement.executeUpdate();
         return rowsDeleted > 0;

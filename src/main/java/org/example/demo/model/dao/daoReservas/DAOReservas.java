@@ -45,7 +45,7 @@ public interface DAOReservas {
      * @return true si la eliminación fue exitosa, false de lo contrario.
      * @throws SQLException Si ocurre un error al acceder a la base de datos.
      */
-    boolean deleteReservaPorTelefonoEIdAlojamiento(int telefono, int id_alojamiento) throws SQLException;
+    boolean deleteReservaPorTelefonoEIdAlojamiento(int telefono, int idAlojamiento) throws SQLException;
 
     /**
      * Actualiza la información de una reserva.

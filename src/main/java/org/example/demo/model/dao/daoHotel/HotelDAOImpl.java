@@ -18,7 +18,7 @@ public class HotelDAOImpl implements HotelDAO {
     private Statement statement;
     private PreparedStatement preparedStatement;
 
-    /**
+    /** 
      * Constructor de la clase HotelDAOImpl que inicializa la conexión a la base de datos.
      *
      * @throws SQLException Si ocurre un error al establecer la conexión.
