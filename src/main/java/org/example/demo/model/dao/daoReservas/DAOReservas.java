@@ -41,11 +41,11 @@ public interface DAOReservas {
      * Elimina una reserva por teléfono y ID de alojamiento.
      *
      * @param telefono El número de teléfono asociado a la reserva.
-     * @param id_alojamiento El ID del alojamiento asociado a la reserva.
+     * @param idAlojamiento El ID del alojamiento asociado a la reserva.
      * @return true si la eliminación fue exitosa, false de lo contrario.
      * @throws SQLException Si ocurre un error al acceder a la base de datos.
      */
-    boolean deleteReservaPorTelefonoEIdAlojamiento(int telefono, int id_alojamiento) throws SQLException;
+    boolean deleteReservaPorTelefonoEIdAlojamiento(int telefono, int idAlojamiento) throws SQLException;
 
     /**
      * Actualiza la información de una reserva.

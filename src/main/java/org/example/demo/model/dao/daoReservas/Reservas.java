@@ -13,7 +13,7 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Reservas {
-    private int id_alojamiento;
+    private int idAlojamiento;
     private int telefono;
     private String fechaEntrada;
     private String fechaSalida;
@@ -21,13 +21,13 @@ public class Reservas {
     /**
      * Constructor de la clase Reservas.
      *
-     * @param id_alojamiento El ID del alojamiento reservado.
+     * @param idAlojamiento El ID del alojamiento reservado.
      * @param telefono El número de teléfono del cliente que realiza la reserva.
      * @param fechaEntrada La fecha de entrada de la reserva.
      * @param fechaSalida La fecha de salida de la reserva.
      */
-    public Reservas(int id_alojamiento, int telefono, String fechaEntrada, String fechaSalida) {
-        this.id_alojamiento = id_alojamiento;
+    public Reservas(int idAlojamiento, int telefono, String fechaEntrada, String fechaSalida) {
+        this.idAlojamiento = idAlojamiento;
         this.telefono = telefono;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
@@ -39,7 +39,7 @@ public class Reservas {
      * @return El ID del alojamiento reservado.
      */
     public int getId_alojamiento() {
-        return id_alojamiento;
+        return idAlojamiento;
     }
 
     /**
@@ -48,7 +48,7 @@ public class Reservas {
      * @param id_alojamiento El ID del alojamiento reservado.
      */
     public void setId_alojamiento(int id_alojamiento) {
-        this.id_alojamiento = id_alojamiento;
+        this.idAlojamiento = id_alojamiento;
     }
 
     /**
@@ -112,7 +112,7 @@ public class Reservas {
      */
     @Override
     public String toString() {
-        return String.format("%d,%d,%s,%s",id_alojamiento, telefono, fechaEntrada, fechaEntrada);
+        return String.format("%d,%d,%s,%s",idAlojamiento, telefono, fechaEntrada, fechaEntrada);
     }
 
     /**
@@ -126,7 +126,7 @@ public class Reservas {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reservas reservas= (Reservas) o;
-        return Objects.equals(id_alojamiento, reservas.id_alojamiento);
+        return Objects.equals(idAlojamiento, reservas.idAlojamiento);
     }
 
     /**
@@ -136,6 +136,6 @@ public class Reservas {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id_alojamiento);
+        return Objects.hash(idAlojamiento);
     }
 }
