@@ -28,7 +28,7 @@ public class LoginController {
     private Button buttonSubmit;
 
     @FXML
-    public void onClick(ActionEvent actionEvent) throws IOException {
+    public void onClick(ActionEvent actionEvent) throws Exception {
         String login = textLogin.getText();
         String password = textPassword.getText();
         System.out.println(login + "--" + password);
@@ -38,6 +38,10 @@ public class LoginController {
             System.out.println("Cambiamos de ventana");
             stage = (Stage) buttonSubmit.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
+
+            FondoLogin fondoLogin = new FondoLogin();
+            fondoLogin.start(new Stage());
+
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
