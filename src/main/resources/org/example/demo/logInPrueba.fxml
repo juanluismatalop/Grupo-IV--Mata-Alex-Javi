@@ -14,23 +14,15 @@
                 </image>
             </ImageView>
             <Button layoutX="330.0" layoutY="312.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="169.0" text="Registrarse" />
-            <Button layoutX="113.0" layoutY="312.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="137.0" text="Entrar" />
+            <Button fx:id="buttonSubmit" layoutX="113.0" layoutY="312.0" mnemonicParsing="false" onAction="#onClick" prefHeight="34.0" prefWidth="137.0" text="Entrar" />
             <Pane layoutX="31.0" prefHeight="283.0" prefWidth="539.0">
                <children>
-                  <Pane opacity="0.53" prefHeight="283.0" prefWidth="539.0" style="-fx-background-color: #E0E0E0;">
-                     <children>
-                        <Label layoutX="230.0" layoutY="14.0" prefHeight="34.0" prefWidth="80.0" text="BIENVENIDO " />
-                        <Label layoutX="22.0" layoutY="109.0" prefHeight="41.0" prefWidth="90.0" text="Nombre" />
-                        <PasswordField layoutX="112.0" layoutY="117.0" prefHeight="25.0" prefWidth="316.0" />
-                        <Label layoutX="22.0" layoutY="177.0" prefHeight="25.0" prefWidth="90.0" text="Contraseña" />
-                        <PasswordField layoutX="112.0" layoutY="177.0" prefHeight="25.0" prefWidth="316.0" />
-                     </children>
-                  </Pane>
+                  <Pane opacity="0.53" prefHeight="283.0" prefWidth="539.0" style="-fx-background-color: #E0E0E0;" />
                   <Label layoutX="230.0" layoutY="14.0" prefHeight="34.0" prefWidth="80.0" text="BIENVENIDO " />
                   <Label layoutX="22.0" layoutY="109.0" prefHeight="41.0" prefWidth="90.0" text="Nombre" />
-                  <PasswordField layoutX="112.0" layoutY="117.0" prefHeight="25.0" prefWidth="316.0" />
+                  <TextField fx:id="textLogin" layoutX="112.0" layoutY="117.0" prefHeight="25.0" prefWidth="316.0" />
                   <Label layoutX="22.0" layoutY="177.0" prefHeight="25.0" prefWidth="90.0" text="Contraseña" />
-                  <PasswordField layoutX="112.0" layoutY="177.0" prefHeight="25.0" prefWidth="316.0" />
+                  <PasswordField fx:id="textPassword" layoutX="112.0" layoutY="177.0" prefHeight="25.0" prefWidth="316.0" />
                </children>
             </Pane>
         </children>
