@@ -1,5 +1,6 @@
 package org.example.demo;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,23 +22,26 @@ public class RegisterPrueba {
     private Label labelUserError;
     @FXML
     private Button buttonRegister;
-    String nombreCompleto = textNombreCompleto.getText();
-    int telefono = Integer.parseInt(textTelefono.getText());
-    String correoElectronico = textCorreoElectronico.getText();
-    String direccion = textDireccion.getText();
-    String contrasenna = textContrasenna.getText();
-    //si todos los camnos estan rellenos pasamos a ventana-view si no nos saldra un error de campos incorrectos
-    if(){
-        labelUserError.setText("Faltan Campos");
-    }else{
-        stage = (Stage) buttonRegister.getScene().getWindow();
-        try {
-            root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    @FXML
+    public void onClick(ActionEvent actionEvent) throws IOException {
+        String nombreCompleto = textNombreCompleto.getText();
+        int telefono = Integer.parseInt(textTelefono.getText());
+        String correoElectronico = textCorreoElectronico.getText();
+        String direccion = textDireccion.getText();
+        String contrasenna = textContrasenna.getText();
+        //si todos los camnos estan rellenos pasamos a ventana-view si no nos saldra un error de campos incorrectos
+        if (nombreCompleto.equals("")) {
+            labelUserError.setText("Faltan Campos");
+        } else {
+            stage = (Stage) buttonRegister.getScene().getWindow();
+            try {
+                root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 }
