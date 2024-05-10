@@ -22,6 +22,8 @@ public class LogInPrueba {
     private Label labelUserError;
     @FXML
     private Button buttonSubmit;
+    @FXML
+    private Button buttonRegister;
 
     @FXML
     public void onClick(ActionEvent actionEvent) throws IOException {
@@ -36,8 +38,17 @@ public class LogInPrueba {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+        } else if (login.equals("") && password.equals("")) {
+            stage = (Stage) buttonRegister.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("registerPrueba.fxml"));
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
-        else
+        else {
             labelUserError.setText("Usuario incorrecto");
+
+        }
     }
 }
