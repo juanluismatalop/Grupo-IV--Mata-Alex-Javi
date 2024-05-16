@@ -22,7 +22,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                      <Button fx:id="buttonRegister" layoutX="215.0" layoutY="330.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="169.0" text="Registrarse" />
+                      <Button fx:id="buttonRegister" layoutX="215.0" layoutY="330.0" onAction="#onClick" mnemonicParsing="false" prefHeight="34.0" prefWidth="169.0" text="Registrarse" />
                   <Label layoutX="10.0" layoutY="67.0" text="Nombre Completo" />
                   <Label layoutX="10.0" layoutY="110.0" text="Telefono" />
                   <Label layoutX="9.0" layoutY="148.0" text="Correro Electronico" />

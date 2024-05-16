@@ -9,7 +9,7 @@
       <Pane prefHeight="400.0" prefWidth="600.0">
         <ImageView fitHeight="407.0" fitWidth="600.0">
             <image>
-                <Image url="@org/example/demo/pictures/Triana.jpg" />
+                <Image url="@org/example/demo/pictures/PuenteDeBarcas.jpg" />
             </image>
         </ImageView>
       </Pane>

@@ -30,7 +30,7 @@ public class RegisterPrueba {
         String direccion = textDireccion.getText();
         String contrasenna = textContrasenna.getText();
         //si todos los camnos estan rellenos pasamos a ventana-view si no nos saldra un error de campos incorrectos
-        if (nombreCompleto.equals("")) {
+        if (checkNombreCompleto(nombreCompleto) == true && checkTelefono(telefono) == true) {
             labelUserError.setText("Faltan Campos");
         } else {
             stage = (Stage) buttonRegister.getScene().getWindow();
@@ -43,5 +43,36 @@ public class RegisterPrueba {
             stage.setScene(scene);
             stage.show();
         }
+    }
+    private boolean checkNombreCompleto(String nombreCompleto){
+        if (nombreCompleto == null)
+            return false;
+        else
+            return true;
+    }
+    private  boolean checkTelefono(int telefono){
+       if (telefono == Integer.parseInt(null))
+           return false;
+       else
+           return true;
+    }
+
+    private boolean checkCorreoElectronico (String correoElectronico){
+        if (correoElectronico == null)
+            return false;
+        else
+            return true;
+    }
+    private boolean checkDireccion (String direccion){
+        if (direccion==null)
+            return false;
+        else
+            return true;
+    }
+    private boolean checkContrasenna (String contrasenna){
+        if (contrasenna == null)
+            return false;
+        else
+            return true;
     }
 }
