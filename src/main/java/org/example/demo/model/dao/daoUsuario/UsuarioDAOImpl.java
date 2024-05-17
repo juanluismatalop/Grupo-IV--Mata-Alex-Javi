@@ -53,7 +53,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 
     @Override
     public boolean insertUsuario(Usuario usuario) throws SQLException {
-        String sql = "INSERT INTO AP_TURISTICOS (Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO USUARIO (Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion) VALUES (?, ?, ?, ?, ?);";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, usuario.getTelefono());
         preparedStatement.setString(2, usuario.getEmail());

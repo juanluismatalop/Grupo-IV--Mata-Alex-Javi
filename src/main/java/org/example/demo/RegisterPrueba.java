@@ -68,7 +68,7 @@ public class RegisterPrueba {
                     errorContraseña.setText("La contraseña debe tener 8 caracteres una mayuscula un . o , y un numero");
                 } else {
                     Usuario usuario = new Usuario(telefono, correoElectronico, contrasenna, nombreCompleto, direccion);
-                    //usuarioDAO.insertUsuario(usuario);
+                    usuarioDAO.insertUsuario(usuario);
                     stage = (Stage) buttonRegister.getScene().getWindow();
                     root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
                     scene = new Scene(root);
@@ -79,6 +79,8 @@ public class RegisterPrueba {
             } catch (NumberFormatException e) {
                 textTelefono.setText("Deben ser caracteres numericos");
                 textTelefono.requestFocus();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
 
         }
