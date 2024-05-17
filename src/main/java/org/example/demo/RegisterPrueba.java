@@ -19,30 +19,32 @@ public class RegisterPrueba {
     @FXML
     private TextField textNombreCompleto, textCorreoElectronico, textDireccion, textContrasenna, textTelefono;
     @FXML
-    private Label labelUserError;
+    private Label labelRegistroError;
     @FXML
     private Button buttonRegister;
     @FXML
+    private Button buttonAtras;
+    @FXML
     public void onClick(ActionEvent actionEvent) throws IOException {
         String nombreCompleto = textNombreCompleto.getText();
-        int telefono = Integer.parseInt(textTelefono.getText());
+        String sTelefono = textTelefono.getText();
+        System.out.println("telefono: " + sTelefono);
+        System.out.println(sTelefono.equals(""));
+        int telefono = Integer.parseInt(sTelefono);
         String correoElectronico = textCorreoElectronico.getText();
         String direccion = textDireccion.getText();
         String contrasenna = textContrasenna.getText();
+
         //si todos los camnos estan rellenos pasamos a ventana-view si no nos saldra un error de campos incorrectos
-        if (checkNombreCompleto(nombreCompleto) == true && checkTelefono(telefono) == true) {
-            labelUserError.setText("Faltan Campos");
-        } else {
+        if (checkNombreCompleto(nombreCompleto)==false&&checkTelefono(telefono)==false&&checkCorreoElectronico(correoElectronico)==false&&checkDireccion(direccion)==false&&checkContrasenna(contrasenna)==false)
+            labelRegistroError.setText("Usuario incorrecto");
+        else
             stage = (Stage) buttonRegister.getScene().getWindow();
-            try {
-                root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }
+
     }
     private boolean checkNombreCompleto(String nombreCompleto){
         if (nombreCompleto == null)
@@ -74,5 +76,13 @@ public class RegisterPrueba {
             return false;
         else
             return true;
+    }
+
+    public void buttonAtras(ActionEvent actionEvent) throws IOException {
+        stage = (Stage) buttonAtras.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("logInPrueba.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
