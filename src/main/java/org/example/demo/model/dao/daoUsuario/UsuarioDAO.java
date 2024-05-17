@@ -10,5 +10,6 @@ public interface UsuarioDAO {
     boolean insertUsuario(Usuario usuario) throws SQLException;
     boolean deleteUsuarioByTelefono(int telefono) throws SQLException;
     boolean updateUsuario(Usuario usuario) throws SQLException;
+    Usuario getUsuarioByNombreANDContrasenna(String nombreCompleto, String contrasenna) throws SQLException;
 
 }
