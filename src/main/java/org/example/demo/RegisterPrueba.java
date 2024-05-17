@@ -10,10 +10,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.example.demo.model.dao.daoUsuario.Usuario;
+import org.example.demo.model.dao.daoUsuario.UsuarioDAO;
+import org.example.demo.model.dao.daoUsuario.UsuarioDAOImpl;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class RegisterPrueba {
+    private UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
     public PasswordField textContrasenna;
     public TextField textNombreCompleto;
     public TextField textTelefono;
@@ -31,6 +36,10 @@ public class RegisterPrueba {
     private Button buttonRegister;
     @FXML
     private Button buttonAtras;
+
+    public RegisterPrueba() throws SQLException, IOException {
+    }
+
     @FXML
     public void onClick(ActionEvent actionEvent) throws IOException {
         String nombreCompleto = textNombreCompleto.getText();
@@ -58,6 +67,8 @@ public class RegisterPrueba {
                 } else if (esContrasennaValida(contrasenna) == false) {
                     errorContraseña.setText("La contraseña debe tener 8 caracteres una mayuscula un . o , y un numero");
                 } else {
+                    Usuario usuario = new Usuario(telefono, correoElectronico, contrasenna, nombreCompleto, direccion);
+                    //usuarioDAO.insertUsuario(usuario);
                     stage = (Stage) buttonRegister.getScene().getWindow();
                     root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
                     scene = new Scene(root);
