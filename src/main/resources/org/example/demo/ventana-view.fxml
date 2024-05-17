@@ -16,6 +16,6 @@
       <Button mnemonicParsing="false" text="Hoteles" />
       <Button layoutX="76.0" mnemonicParsing="false" text="Reservas" />
       <Button layoutX="154.0" mnemonicParsing="false" text="Apartamentos Turisticos" />
-      <Button fx:id="buttonCerrarSesion" layoutX="311.0" mnemonicParsing="false" text="Cerrar Sesion" />
+      <Button fx:id="buttonCerrarSesion" layoutX="311.0" mnemonicParsing="false" onAction="#buttonCerrarSesion" text="Cerrar Sesion" />
    </children>
 </AnchorPane>

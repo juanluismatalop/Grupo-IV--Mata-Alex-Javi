@@ -23,5 +23,6 @@ public class VentanaController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        System.out.println("Boton pulsado");
     }
 }
