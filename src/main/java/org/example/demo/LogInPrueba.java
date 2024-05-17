@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LogInPrueba {
+    //correcto
     private Stage stage;
     private Scene scene;
     private Parent root;
