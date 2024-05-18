@@ -11,13 +11,13 @@ import java.io.IOException;
 
 public class HotelesView {
 
+    public Button backButton;
     private Stage stage;
     private Parent root;
     private Scene scene;
-    private Button buttonAtras;
 
-    public void buttonAtras(ActionEvent actionEvent) throws IOException {
-        stage = (Stage) buttonAtras.getScene().getWindow();
+    public void back(ActionEvent actionEvent) throws IOException {
+        stage = (Stage) backButton.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
         scene = new Scene(root);
         stage.setScene(scene);
