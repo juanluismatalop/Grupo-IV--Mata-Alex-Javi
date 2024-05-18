@@ -18,6 +18,7 @@ import java.sql.SQLException;
 
 public class LogInPrueba {
     //implementacion de UsuarioDao
+    private UsuarioDAOImpl usuarioDaoImp = new UsuarioDAOImpl();
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -40,7 +41,13 @@ public class LogInPrueba {
         String contrasenna = textPassword.getText();
         System.out.println(nombreCompleto + "--" + contrasenna);
         //hacer que se loguee siendo un usuario
-        if (nombreCompleto.equals("manuel") && contrasenna.equals("1234")) {
+        boolean usuarioExist;
+        try {
+             usuarioExist = usuarioDaoImp.getUsuarioByNombreANDContrasenna(nombreCompleto,contrasenna);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if (!usuarioExist) {
             System.out.println("Cambiamos de ventana");
             stage = (Stage) buttonSubmit.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
