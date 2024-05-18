@@ -54,15 +54,7 @@ public class LogInPrueba {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-
-        } else if (nombreCompleto.equals("") && contrasenna.equals("")) {
-            stage = (Stage) buttonRegister.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("registerPrueba.fxml"));
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-        else {
+        }else{
             labelUserError.setText("Usuario incorrecto");
 
         }
@@ -73,5 +65,13 @@ public class LogInPrueba {
         UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
         usuarioDAO.getUsuario().equals(usuarioDAO.getUsuarioByNombreANDContrasenna(nombreCompleto, contrasenna));
         return null;
+    }
+
+    public void buttonRegis(ActionEvent actionEvent) throws IOException {
+        stage = (Stage) buttonRegister.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("registerPrueba.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
