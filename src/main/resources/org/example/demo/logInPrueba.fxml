@@ -14,7 +14,7 @@
                     <Image url="@org/example/demo/pictures/Embalse-del-Tranco.jpg" />
                 </image>
             </ImageView>
-            <Button fx:id="buttonRegister" layoutX="330.0" layoutY="312.0" mnemonicParsing="false" onAction="#onClick" prefHeight="34.0" prefWidth="169.0" text="Registrarse" />
+            <Button fx:id="buttonRegister" layoutX="330.0" layoutY="312.0" mnemonicParsing="false" onAction="#buttonRegis" prefHeight="34.0" prefWidth="169.0" text="Registrarse" />
             <Button fx:id="buttonSubmit" layoutX="113.0" layoutY="312.0" mnemonicParsing="false" onAction="#onClick" prefHeight="34.0" prefWidth="137.0" text="Entrar" />
             <Pane layoutX="31.0" prefHeight="283.0" prefWidth="539.0">
                <children>

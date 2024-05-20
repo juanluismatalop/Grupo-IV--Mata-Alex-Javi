@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="223.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.AnnadirHotelView">
+   <children>
+      <Label layoutX="52.0" layoutY="78.0" text="ID" />
+      <Label layoutX="36.0" layoutY="112.0" text="Nombre" />
+      <Label layoutX="16.0" layoutY="146.0" text="Tipo Habitacion" />
+      <Label layoutX="13.0" layoutY="181.0" text="Numero Estrellas" />
+      <ChoiceBox layoutX="127.0" layoutY="142.0" prefWidth="150.0" />
+      <TextField layoutX="128.0" layoutY="177.0" />
+      <TextField layoutX="128.0" layoutY="108.0" />
+      <TextField layoutX="128.0" layoutY="74.0" />
+      <Button layoutX="325.0" layoutY="177.0" mnemonicParsing="false" text="OK" />
+      <Button layoutX="347.0" layoutY="14.0" mnemonicParsing="false" text="X" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Label layoutX="16.0" layoutY="16.0" text="Añadir Hoteles">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

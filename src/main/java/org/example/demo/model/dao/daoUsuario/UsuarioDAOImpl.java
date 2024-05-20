@@ -86,6 +86,29 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         return rowsUpdated > 0;
     }
 
+    @Override
+    public boolean getUsuarioByNombreANDContrasenna(String nombreCompleto, String contrasenna) throws SQLException {
+        Usuario usuario = null;
+        String sql = "SELECT * FROM USUARIO WHERE NOMBRE_COMPLETO = ? AND Contrasenna = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, nombreCompleto);
+        preparedStatement.setString(2, contrasenna);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+
+            int Telefono = resultSet.getInt("Telefono");
+            String Email = resultSet.getString("Email");
+            String Direccion = resultSet.getString("Direccion");
+            usuario = new Usuario(Telefono, Email, contrasenna, nombreCompleto, Direccion);
+
+        }
+        if (resultSet.next()){
+            return true;
+        }
+        return false;
+
+    }
+
     public static void main(String[] args) {
     }
 }
