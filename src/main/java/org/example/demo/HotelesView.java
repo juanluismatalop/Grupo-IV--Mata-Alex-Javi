@@ -1,5 +1,6 @@
 package org.example.demo;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,12 +27,17 @@ public class HotelesView {
         stage.show();
     }
     public void buttonAdd(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("src/main/resources/org/example/demo/Annadir-Hotel-view.fxml"));
-        root = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("AñadirHotel");
-        stage.setScene(new Scene(root));
+//        stage = (Stage) buttonAdd.getScene().getWindow();
+//        root = FXMLLoader.load(getClass().getResource("Annadir-Hotel-view.fxml"));
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(HotelesView.class.getResource("Annadir-Hotel-view.fxml"));
+        Scene scene2 = new Scene(fxmlLoader.load(), 600, 450);
+        scene2 = new Scene(root);
+        stage.setScene(scene2);
         stage.show();
     }
+
+
 }
