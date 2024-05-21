@@ -83,7 +83,7 @@ public class HotelDAOImpl implements HotelDAO {
      */
     @Override
     public boolean insertHotel(Hotel hotel) throws SQLException {
-        String sql = "INSERT INTO HOTELES (Id_Alojamiento, Tipo_Habitacion, Nombre, Numero_Estrellas) VALUES (?, ?, ?,?);";
+        String sql = "INSERT INTO HOTELES (Id_Alojamiento, Tipo_Habitacion, Nombre, Numero_Estrellas) VALUES (?, '?', '?','?',?);";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, hotel.getIdAlojamiento());
         preparedStatement.setString(2, hotel.getTipoHabitacion());
@@ -102,7 +102,7 @@ public class HotelDAOImpl implements HotelDAO {
      */
     @Override
     public boolean deleteHotelById(int Id_Alojamiento) throws SQLException {
-        String sql = "DELETE FROM HOTELES WHERE Id_Alojamiento = ?;";
+        String sql = "DELETE FROM HOTELES WHERE Id_Alojamiento = '?';";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, Id_Alojamiento);
         int rowsDeleted = preparedStatement.executeUpdate();
@@ -118,7 +118,7 @@ public class HotelDAOImpl implements HotelDAO {
      */
     @Override
     public boolean updateHotel(Hotel hotel) throws SQLException {
-        String sql = "UPDATE HOTELES SET Nombre = ?, Distancia_Centro_Km = ? WHERE Id_Alojamiento = ?;";
+        String sql = "UPDATE HOTELES SET Nombre = '?', Distancia_Centro_Km = '?' WHERE Id_Alojamiento = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, hotel.getIdAlojamiento());
         preparedStatement.setString(2, hotel.getTipoHabitacion());
