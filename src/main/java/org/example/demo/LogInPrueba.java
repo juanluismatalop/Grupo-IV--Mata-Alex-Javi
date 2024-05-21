@@ -56,8 +56,8 @@ public class LogInPrueba {
     // con el usuario y contrasenna introducidos para iniciar sesion;
     private static boolean comprobarUsuarioYContrasenna(String nombreCompleto, String contrasenna) throws SQLException, IOException {
         UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
-        System.out.println(usuarioDAO.getUsuario().equals(usuarioDAO.getUsuarioByNombreANDContrasenna(nombreCompleto, contrasenna)));
-        if(usuarioDAO.getUsuario().equals(usuarioDAO.getUsuarioByNombreANDContrasenna(nombreCompleto, contrasenna)))
+        System.out.println(usuarioDAO.getUsuarioByNombreANDContrasenna(nombreCompleto, contrasenna));
+        if(usuarioDAO.getUsuarioByNombreANDContrasenna(nombreCompleto, contrasenna))
             return true;
         else
             return false;
