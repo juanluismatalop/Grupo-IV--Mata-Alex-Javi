@@ -43,11 +43,12 @@ public class LogInPrueba {
         //hacer que se loguee siendo un usuario
         boolean usuarioExist;
         try {
-             usuarioExist = usuarioDaoImp.getUsuarioByNombreANDContrasenna(nombreCompleto,contrasenna);
+            usuarioExist = usuarioDaoImp.getUsuarioByNombreANDContrasenna(nombreCompleto,contrasenna);
+            System.out.println(usuarioExist);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if (!usuarioExist) {
+        if (usuarioExist == true) {
             System.out.println("Cambiamos de ventana");
             stage = (Stage) buttonSubmit.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
