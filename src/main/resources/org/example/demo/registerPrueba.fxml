@@ -19,6 +19,15 @@
                   <Pane layoutY="7.0" opacity="0.65" prefHeight="306.0" prefWidth="600.0" style="-fx-background-color: #E0E0E0;">
                      <children>
                         <Label fx:id="errorContraseña" layoutX="8.0" layoutY="235.0" prefHeight="25.0" prefWidth="520.0" textAlignment="CENTER" textFill="RED" />
+                         <TextFlow layoutX="3.0" layoutY="239.0" prefHeight="68.0" prefWidth="600.0">
+                           <children>
+                               <Label fx:id="labelRegistroError" alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="602.0" textAlignment="CENTER" textFill="#fc0000">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </TextFlow>
                      </children></Pane>
                   <Label layoutX="254.0" layoutY="14.0" text="Registro">
                      <font>
@@ -36,15 +45,6 @@
                   <TextField fx:id="textTelefono" layoutX="127.0" layoutY="106.0" prefHeight="25.0" prefWidth="406.0" />
                   <TextField fx:id="textCorreoElectronico" layoutX="127.0" layoutY="144.0" prefHeight="25.0" prefWidth="406.0" />
                    <TextField fx:id="textDireccion" layoutX="127.0" layoutY="179.0" prefHeight="25.0" prefWidth="406.0" />
-                   <TextFlow layoutY="259.0" prefHeight="34.0" prefWidth="600.0">
-                     <children>
-                         <Label fx:id="labelRegistroError" alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="233.0" prefHeight="42.0" prefWidth="602.0" textAlignment="CENTER" textFill="#fc0000">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </TextFlow>
 
                   <Button fx:id="buttonAtras" layoutX="60.0" layoutY="329.0" mnemonicParsing="false" onAction="#buttonAtras" prefHeight="34.0" prefWidth="109.0">
                      <graphic>
