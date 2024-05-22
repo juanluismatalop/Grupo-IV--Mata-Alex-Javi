@@ -6,8 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.IOException;
 
@@ -26,17 +28,10 @@ public class HotelesView {
         stage.setScene(scene);
         stage.show();
     }
-    public void buttonAdd(ActionEvent actionEvent) throws IOException {
-//        stage = (Stage) buttonAdd.getScene().getWindow();
-//        root = FXMLLoader.load(getClass().getResource("Annadir-Hotel-view.fxml"));
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-        FXMLLoader fxmlLoader = new FXMLLoader(HotelesView.class.getResource("Annadir-Hotel-view.fxml"));
-        Scene scene2 = new Scene(fxmlLoader.load(), 600, 450);
-        scene2 = new Scene(root);
-        stage.setScene(scene2);
-        stage.show();
+    public void buttonAdd(ActionEvent actionEvent){
+        Dialog<Pair<String, String>> dialog = new Dialog<>();
+        dialog.setTitle("Añadir Hotel");
+        dialog.setHeaderText("Añadir Hotel");
     }
 
 
