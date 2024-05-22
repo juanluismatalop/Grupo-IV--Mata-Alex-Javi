@@ -76,6 +76,7 @@ public class RegisterPrueba {
                     stage.show();
                 }
 
+
             } catch (NumberFormatException e) {
                 textTelefono.setText("Deben ser caracteres numericos");
                 textTelefono.requestFocus();
