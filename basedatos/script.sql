@@ -7,7 +7,9 @@ CREATE TABLE USUARIO (
     Email VARCHAR2(50) NOT NULL,
     Contrasenna VARCHAR2(50) NOT NULL,
     NOMBRE_COMPLETO VARCHAR2(50) NOT NULL,
-    Direccion VARCHAR2(60)
+    Direccion VARCHAR2(60),
+    Funcion VARCHAR(20),
+    CONSTRAINT funcionCK CHECK (Funcion IN ('Administrador', 'Cliente', 'Recepcionista'))
 );
 --falta not null V
 --id alojamiento autoincrementable V
