@@ -100,15 +100,15 @@ public class UsuarioDAOImpl implements UsuarioDAO{
             String Email = resultSet.getString("Email");
             String Direccion = resultSet.getString("Direccion");
             usuario = new Usuario(Telefono, Email, contrasenna, nombreCompleto, Direccion);
+            return true;
 
         }
-        if (resultSet.next()){
-            return true;
-        }
+
         return false;
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, IOException {
+
     }
 }
