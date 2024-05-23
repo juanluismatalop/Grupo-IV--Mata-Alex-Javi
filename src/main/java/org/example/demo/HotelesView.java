@@ -21,7 +21,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class HotelesView {
-    //cambios
 
     @FXML
     private Button backButton;
@@ -44,53 +43,59 @@ public class HotelesView {
     @FXML
     private TableColumn<Hotel, String> nameColumn;
 
-    private Stage stage;
-    private Parent root;
-    private Scene scene;
-
-    private HotelDAO hotelDAO = new HotelDAOImpl();
-
-    public HotelesView() throws SQLException, IOException {
-    }
+    private ObservableList<Hotel> hotelData;
 
     @FXML
     public void initialize() {
-        // Configurar las columnas del TableView para que muestren los datos apropiadamente
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("roomType"));
-        starsColumn.setCellValueFactory(new PropertyValueFactory<>("stars"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("idAlojamiento"));
+        roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("tipoHabitacion"));
+        starsColumn.setCellValueFactory(new PropertyValueFactory<>("numeroEstrellas"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        updateTableView();
+    }
 
-        // Obtener los datos de la base de datos
+    public void updateTableView() {
+        HotelDAO hotelDAO;
         try {
+            hotelDAO = new HotelDAOImpl();
             List<Hotel> hotels = hotelDAO.getHotel();
-            // Convertir la lista a un ObservableList
-            ObservableList<Hotel> hotelData = FXCollections.observableArrayList(hotels);
-            // Mostrar los datos en el TableView
+            hotelData = FXCollections.observableArrayList(hotels);
             tableView.setItems(hotelData);
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
-            // Manejo de errores, por ejemplo, mostrar un mensaje de error al usuario
         }
     }
 
     @FXML
     public void back(ActionEvent actionEvent) throws IOException {
-        stage = (Stage) backButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
-        scene = new Scene(root);
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML
-    public void buttonAdd(ActionEvent actionEvent) throws SQLException, IOException {
+    public void buttonAdd(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddHoteles-view.fxml"));
-        Parent root1 = fxmlLoader.load();
+        Parent root = fxmlLoader.load();
+        AddHotelesView addHotelesView = fxmlLoader.getController();
+        addHotelesView.setHotelesViewController(this);
         Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
+        stage.setScene(new Scene(root));
         stage.setTitle("Añadir Hotel");
         stage.show();
     }
+    @FXML
+    public void buttonRemove(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RemoveHotel-view.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Eliminar Hotel");
+        stage.show();
+    }
 }
+
+
 

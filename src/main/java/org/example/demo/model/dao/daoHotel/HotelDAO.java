@@ -55,5 +55,6 @@ public interface HotelDAO {
      */
     boolean updateHotel(Hotel hotel) throws SQLException;
 
+    boolean deleteHotel(int id) throws SQLException;
 }
 

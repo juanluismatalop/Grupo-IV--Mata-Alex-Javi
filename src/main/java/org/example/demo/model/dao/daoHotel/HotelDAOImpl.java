@@ -18,7 +18,7 @@ public class HotelDAOImpl implements HotelDAO {
     private Statement statement;
     private PreparedStatement preparedStatement;
 
-    /** 
+    /**
      * Constructor de la clase HotelDAOImpl que inicializa la conexión a la base de datos.
      *
      * @throws SQLException Si ocurre un error al establecer la conexión.
@@ -126,6 +126,15 @@ public class HotelDAOImpl implements HotelDAO {
         preparedStatement.setInt(4,hotel.getNumeroEstrellas());
         int rowsUpdated = preparedStatement.executeUpdate();
         return rowsUpdated > 0;
+    }
+
+    @Override
+    public boolean deleteHotel(int id) throws SQLException {
+        String sql = "DELETE FROM hotels WHERE id = ?";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        int affectedRows = preparedStatement.executeUpdate();
+        return affectedRows > 0;
     }
 }
 
