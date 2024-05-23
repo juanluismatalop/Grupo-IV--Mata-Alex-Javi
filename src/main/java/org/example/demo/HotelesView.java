@@ -14,6 +14,7 @@ import javafx.util.Pair;
 import java.io.IOException;
 
 public class HotelesView {
+    //cambios
 
     public Button backButton;
     public Button buttonAdd;
