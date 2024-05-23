@@ -1,19 +1,29 @@
 package org.example.demo;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import org.example.demo.model.dao.daoHotel.Hotel;
+import org.example.demo.model.dao.daoHotel.HotelDAO;
+import org.example.demo.model.dao.daoHotel.HotelDAOImpl;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Optional;
 
 public class HotelesView {
+
 
     public Button backButton;
     public Button buttonAdd;
@@ -28,11 +38,7 @@ public class HotelesView {
         stage.setScene(scene);
         stage.show();
     }
-    public void buttonAdd(ActionEvent actionEvent){
-        Dialog<Pair<String, String>> dialog = new Dialog<>();
-        dialog.setTitle("Añadir Hotel");
-        dialog.setHeaderText("Añadir Hotel");
+    public void buttonAdd(ActionEvent actionEvent) throws SQLException, IOException {
+
     }
-
-
 }
