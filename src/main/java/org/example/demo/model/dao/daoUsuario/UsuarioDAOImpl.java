@@ -6,15 +6,31 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author Juan Luis Mata
+ * @version 1.0
+ * @since 1.0
+ */
 public class UsuarioDAOImpl implements UsuarioDAO{
     private final Connection connection;
     private Statement statement;
     private PreparedStatement preparedStatement;
 
+    /**
+     * constructor para implementar el coneection
+     * @throws SQLException
+     * @throws IOException
+     */
+
     public UsuarioDAOImpl() throws SQLException, IOException {
         connection = SetUpConnection.getInstance().getConnection();
     }
+
+    /**
+     * metodo que lista los usuarios
+     * @return
+     * @throws SQLException
+     */
     @Override
     public List<Usuario> getUsuario() throws SQLException {
         List<Usuario> usuario = new ArrayList<>();
@@ -33,7 +49,12 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         }
         return usuario;
     }
-
+    /**
+     * metodo que te devuelve un usuario
+     * @param usuario
+     * @return
+     * @throws SQLException
+     */
     @Override
     public Usuario getUsuarioByTelefono(Usuario usuario) throws SQLException {
         String sql = "SELECT * FROM USUSARIO WHERE Telefono = ?;";
@@ -50,7 +71,12 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         }
         return usuario;
     }
-
+    /**
+     * metodo para insertar un usuario
+     * @param usuario
+     * @return
+     * @throws SQLException
+     */
     @Override
     public boolean insertUsuario(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO USUARIO (Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion) VALUES (?, ?, ?, ?, ?);";
@@ -63,7 +89,12 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         int rowsInserted = preparedStatement.executeUpdate();
         return rowsInserted > 0;
     }
-
+    /**
+     * metodo para borrar usuarios con el valor movil
+     * @param telefono
+     * @return
+     * @throws SQLException
+     */
     @Override
     public boolean deleteUsuarioByTelefono(int telefono) throws SQLException {
         String sql = "DELETE FROM USUARIO WHERE Telefono = ?;";
@@ -72,7 +103,12 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         int rowsDeleted = preparedStatement.executeUpdate();
         return rowsDeleted > 0;
     }
-
+    /**
+     * metodo para actualizar usuario
+     * @param usuario
+     * @return
+     * @throws SQLException
+     */
     @Override
     public boolean updateUsuario(Usuario usuario) throws SQLException {
         String sql = "UPDATE USUARIO SET Telefono = ?, Email = ?, Contrasenna = ?, NOMBRE_COMPLETO = ?, Direccion = ? WHERE Telefono = ?;";
@@ -85,7 +121,13 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         int rowsUpdated = preparedStatement.executeUpdate();
         return rowsUpdated > 0;
     }
-
+    /**
+     * Metodo que te da un usuario introduciendo tu su nombre y contrasenna
+     * @param nombreCompleto
+     * @param contrasenna
+     * @return
+     * @throws SQLException
+     */
     @Override
     public boolean getUsuarioByNombreANDContrasenna(String nombreCompleto, String contrasenna) throws SQLException {
         Usuario usuario = null;
@@ -103,12 +145,6 @@ public class UsuarioDAOImpl implements UsuarioDAO{
             return true;
 
         }
-
         return false;
-
-    }
-
-    public static void main(String[] args) throws SQLException, IOException {
-
     }
 }
