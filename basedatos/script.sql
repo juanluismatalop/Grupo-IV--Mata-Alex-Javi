@@ -36,9 +36,7 @@ CREATE TABLE RESERVA (
     Telefono NUMBER,
     Fecha_Entrada DATETIME NOT NULL,
     Fecha_Salida DATETIME NOT NULL,
-    CONSTRAINT PK_2 PRIMARY KEY (Telefono, Id_Alojamiento, Fecha_Entrada),
-    CONSTRAINT FK_1 FOREIGN KEY (Telefono) REFERENCES USUARIO(Telefono) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_2 FOREIGN KEY (Id_Alojamiento) REFERENCES ALOJAMIENTOS(Id_Alojamiento) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT PK_2 PRIMARY KEY (Telefono, Id_Alojamiento, Fecha_Entrada)
 );
 --falta not null V
 --añade nombre hotel V
@@ -51,10 +49,7 @@ CREATE TABLE HOTELES (
     Nombre VARCHAR2(30) NOT NULL,
     Numero_Estrellas NUMBER(1),
     CONSTRAINT CK_2 CHECK (Numero_Estrellas IN (1, 2, 3, 4, 5)),
-    CONSTRAINT CK_3 CHECK (Tipo_habitacion IN ('Unica', 'Doble', 'Triple', 'Cuadruple')),
-    CONSTRAINT FK_3 FOREIGN KEY (Id_Alojamiento) REFERENCES ALOJAMIENTOS(Id_Alojamiento) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_4 FOREIGN KEY (Nombre) REFERENCES ALOJAMIENTOS(Nombre) ON DELETE CASCADE ON UPDATE CASCADE
-
+    CONSTRAINT CK_3 CHECK (Tipo_habitacion IN ('Unica', 'Doble', 'Triple', 'Cuadruple'))
 );
 --falta not null V
 --nombre de apartamento turistico V
@@ -62,9 +57,7 @@ DROP TABLE IF EXISTS AP_TURISTICOS;
 CREATE TABLE AP_TURISTICOS (
     Id_Alojamiento NUMBER NOT NULL PRIMARY KEY,
     Nombre VARCHAR2(30) NOT NULL,
-    Distancia_Centro_Km NUMBER,
-    CONSTRAINT FK_5 FOREIGN KEY (Id_Alojamiento) REFERENCES ALOJAMIENTOS(Id_Alojamiento) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FK_6 FOREIGN KEY (Nombre) REFERENCES ALOJAMIENTOS(Nombre) ON DELETE CASCADE ON UPDATE CASCADE
+    Distancia_Centro_Km NUMBER
 );
 --crear vista con
 -- -nombre.usuario
