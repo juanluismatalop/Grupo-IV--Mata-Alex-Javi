@@ -83,7 +83,7 @@ public class HotelDAOImpl implements HotelDAO {
      */
     @Override
     public boolean insertHotel(Hotel hotel) throws SQLException {
-        String sql = "INSERT INTO HOTELES (Id_Alojamiento, Tipo_Habitacion, Nombre, Numero_Estrellas) VALUES (?, '?', '?','?',?);";
+        String sql = "INSERT INTO HOTELES (Id_Alojamiento, Tipo_Habitacion, Nombre, Numero_Estrellas) VALUES (?, ?, ?, ?);";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, hotel.getIdAlojamiento());
         preparedStatement.setString(2, hotel.getTipoHabitacion());
@@ -102,7 +102,7 @@ public class HotelDAOImpl implements HotelDAO {
      */
     @Override
     public boolean deleteHotelById(int Id_Alojamiento) throws SQLException {
-        String sql = "DELETE FROM HOTELES WHERE Id_Alojamiento = '?';";
+        String sql = "DELETE FROM HOTELES WHERE Id_Alojamiento = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, Id_Alojamiento);
         int rowsDeleted = preparedStatement.executeUpdate();
@@ -130,7 +130,7 @@ public class HotelDAOImpl implements HotelDAO {
 
     @Override
     public boolean deleteHotel(int id) throws SQLException {
-        String sql = "DELETE FROM hotels WHERE id = ?";
+        String sql = "DELETE FROM HOTELES WHERE Id_Alojamiento = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         int affectedRows = preparedStatement.executeUpdate();
@@ -139,7 +139,17 @@ public class HotelDAOImpl implements HotelDAO {
 
     public static void main(String[] args) {
         try {
+            System.out.println("Enseñamos los hoteles que hay");
             HotelDAO hotelDAO = new HotelDAOImpl();
+            System.out.println(hotelDAO.getHotel());
+            System.out.println("Introduciomos un hotel nuevo");
+            Hotel hotel = new Hotel(1122, "Unica", "Almiceran", 5);
+            hotelDAO.insertHotel(hotel);
+            System.out.println("Hotel introducido");
+            System.out.println("Enseñamos otra vez hotel");
+            System.out.println(hotelDAO.getHotel());
+            System.out.println("Eliminamos hotel 1122");
+            hotelDAO.deleteHotelById(1122);
             System.out.println(hotelDAO.getHotel());
         } catch (SQLException e) {
             throw new RuntimeException(e);

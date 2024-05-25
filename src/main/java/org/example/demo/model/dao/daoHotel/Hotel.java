@@ -110,7 +110,7 @@ public class Hotel {
      */
     @Override
     public String toString() {
-        return String.format("%d, %s, %s, %d", idAlojamiento, tipoHabitacion, nombre, numeroEstrellas);
+        return String.format("%d, %s, %s, %d%n", idAlojamiento, tipoHabitacion, nombre, numeroEstrellas);
     }
 
     /**
