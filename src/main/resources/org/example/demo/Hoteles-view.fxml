@@ -14,10 +14,10 @@
       </ImageView>
       <TableView fx:id="tableView" layoutX="119.0" layoutY="113.0" prefHeight="306.0" prefWidth="517.0">
          <columns>
-            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="roomTypeColumn" prefWidth="104.199951171875" text="Tipo Habitacion" />
-            <TableColumn fx:id="starsColumn" prefWidth="127.79998779296875" text="Numero de Estrellas" />
-            <TableColumn fx:id="nameColumn" prefWidth="127.79998779296875" text="Nombre" />
+            <TableColumn fx:id="columnIdAlojamientos" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="columnTipoHabitacion" prefWidth="104.199951171875" text="Tipo Habitacion" />
+            <TableColumn fx:id="columnNumeroEstrellas" prefWidth="127.79998779296875" text="Numero de Estrellas" />
+            <TableColumn fx:id="columnNombre" prefWidth="127.79998779296875" text="Nombre" />
          </columns>
       </TableView>
       <Button fx:id="buttonAdd" layoutX="31.0" layoutY="113.0" mnemonicParsing="false" onAction="#buttonAdd" prefHeight="46.0" prefWidth="32.0">

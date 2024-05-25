@@ -23,6 +23,14 @@ import java.util.List;
 public class HotelesView {
 
     @FXML
+    private TableColumn<Hotel, Integer> columnIdAlojamientos;
+    @FXML
+    private TableColumn<Hotel, String> columnTipoHabitacion;
+    @FXML
+    private TableColumn<Hotel, Integer> columnNumeroEstrellas;
+    @FXML
+    private TableColumn<Hotel, String> columnNombre;
+    @FXML
     private Button backButton;
 
     @FXML
@@ -31,26 +39,14 @@ public class HotelesView {
     @FXML
     private TableView<Hotel> tableView;
 
-    @FXML
-    private TableColumn<Hotel, Integer> idColumn;
-
-    @FXML
-    private TableColumn<Hotel, String> roomTypeColumn;
-
-    @FXML
-    private TableColumn<Hotel, Integer> starsColumn;
-
-    @FXML
-    private TableColumn<Hotel, String> nameColumn;
-
     private ObservableList<Hotel> hotelData;
 
     @FXML
     public void initialize() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("idAlojamiento"));
-        roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("tipoHabitacion"));
-        starsColumn.setCellValueFactory(new PropertyValueFactory<>("numeroEstrellas"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnIdAlojamientos.setCellValueFactory(new PropertyValueFactory<>("idAlojamiento"));
+        columnTipoHabitacion.setCellValueFactory(new PropertyValueFactory<>("tipoHabitacion"));
+        columnNumeroEstrellas.setCellValueFactory(new PropertyValueFactory<>("numeroEstrellas"));
+        columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         updateTableView();
     }
 

@@ -136,5 +136,16 @@ public class HotelDAOImpl implements HotelDAO {
         int affectedRows = preparedStatement.executeUpdate();
         return affectedRows > 0;
     }
+
+    public static void main(String[] args) {
+        try {
+            HotelDAO hotelDAO = new HotelDAOImpl();
+            System.out.println(hotelDAO.getHotel());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
