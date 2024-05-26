@@ -11,8 +11,8 @@ import java.util.Objects;
  */
 public class Hotel {
 
-    private int IdAlojamiento;
-    private String TipoHabitacion;
+    private int idAlojamiento;
+    private String tipoHabitacion;
     private String nombre;
     private int numeroEstrellas;
 
@@ -25,8 +25,8 @@ public class Hotel {
      * @param numeroEstrellas El número de estrellas del hotel.
      */
     public Hotel(int idAlojamiento, String tipo_habitacion, String nombre, int numeroEstrellas) {
-        IdAlojamiento = idAlojamiento;
-        TipoHabitacion = tipo_habitacion;
+        this.idAlojamiento = idAlojamiento;
+        tipoHabitacion = tipo_habitacion;
         this.nombre = nombre;
         this.numeroEstrellas = numeroEstrellas;
     }
@@ -37,7 +37,7 @@ public class Hotel {
      * @return identificador del alojamiento.
      */
     public int getIdAlojamiento() {
-        return IdAlojamiento;
+        return idAlojamiento;
     }
 
     /**
@@ -46,7 +46,7 @@ public class Hotel {
      * @param idAlojamiento identificador del alojamiento.
      */
     public void setIdAlojamiento(int idAlojamiento) {
-        IdAlojamiento = idAlojamiento;
+        this.idAlojamiento = idAlojamiento;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Hotel {
      * @return tipo de habitación del hotel.
      */
     public String getTipoHabitacion() {
-        return TipoHabitacion;
+        return tipoHabitacion;
     }
 
     /**
@@ -64,7 +64,7 @@ public class Hotel {
      * @param tipoHabitacion  tipo de habitación del hotel.
      */
     public void setTipoHabitacion(String tipoHabitacion) {
-        TipoHabitacion = tipoHabitacion;
+        this.tipoHabitacion = tipoHabitacion;
     }
 
     /**
@@ -110,7 +110,7 @@ public class Hotel {
      */
     @Override
     public String toString() {
-        return String.format("%d, %s, %s, %d", IdAlojamiento, TipoHabitacion, nombre, numeroEstrellas);
+        return String.format("%d, %s, %s, %d", idAlojamiento, tipoHabitacion, nombre, numeroEstrellas);
     }
 
     /**
@@ -124,7 +124,7 @@ public class Hotel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Hotel hotel = (Hotel) o;
-        return Objects.equals(IdAlojamiento, hotel.IdAlojamiento);
+        return Objects.equals(idAlojamiento, hotel.idAlojamiento);
     }
 
     /**
@@ -134,6 +134,6 @@ public class Hotel {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(IdAlojamiento);
+        return Objects.hash(idAlojamiento);
     }
 }

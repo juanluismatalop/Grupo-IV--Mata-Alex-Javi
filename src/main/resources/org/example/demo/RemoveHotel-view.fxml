@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="258.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.RemoveHotel">
+    <children>
+        <Label layoutX="219.0" layoutY="14.0" text="Borrar Hotel">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="450.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@org/example/demo/pictures/ReservasTriana.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="36.0" layoutY="120.0" text="Id " />
+        <TextField fx:id="idField" layoutX="107.0" layoutY="116.0" />
+        <Button fx:id="deleteButton" layoutX="274.0" layoutY="219.0" mnemonicParsing="false" onAction="#delete" text="Borrar" />
+    </children>
+</AnchorPane>

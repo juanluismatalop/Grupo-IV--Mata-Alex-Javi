@@ -11,8 +11,6 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
-        //System.out.println("hola mundo");
-        //  String url = "jdbc:sqlite:databases/database.db";
         SQLiteConfig config = new SQLiteConfig();
         config.enforceForeignKeys(true);
         Properties properties = new Properties();
