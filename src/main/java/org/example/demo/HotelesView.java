@@ -18,30 +18,50 @@ import org.example.demo.model.dao.daoHotel.HotelDAOImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
+
+
 
 public class HotelesView {
     public Button backButton;
     public Button buttonRemove;
-    public TableColumn columnIdAlojamientos;
-    public TableColumn columnTipoHabitacion;
-    public TableColumn columnNumeroEstrellas;
-    public TableColumn columnNombre;
-    public Button buttonAdd;
-    public TableView tableView;
     @FXML
-    public void loadTableData() {
-        columnIdAlojamientos.setCellValueFactory(new PropertyValueFactory<>("id"));
+    private TableView<Hotel> tableView;
+
+    @FXML
+    private TableColumn<Hotel, Integer> columnIdAlojamientos;
+
+    @FXML
+    private TableColumn<Hotel, String> columnTipoHabitacion;
+
+    @FXML
+    private TableColumn<Hotel, Integer> columnNumeroEstrellas;
+
+    @FXML
+    private TableColumn<Hotel, String> columnNombre;
+
+    private HotelDAO hotelDAO;
+    public Button buttonAdd;
+
+    public void initialize() {
+        try {
+            hotelDAO = new HotelDAOImpl();
+        } catch (SQLException e) {
+            System.out.println("Hay un error");;
+        } catch (IOException e) {
+            System.out.println("Hay un error");;
+        }
+        columnIdAlojamientos.setCellValueFactory(new PropertyValueFactory<>("idAlojamiento"));
         columnTipoHabitacion.setCellValueFactory(new PropertyValueFactory<>("tipoHabitacion"));
         columnNumeroEstrellas.setCellValueFactory(new PropertyValueFactory<>("numeroEstrellas"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        loadHotels();
+    }
+
+    private void loadHotels() {
         try {
-            HotelDAO hotelDAO = new HotelDAOImpl();
-            List<Hotel> hotels;
-            hotels = hotelDAO.getHotel();
-            ObservableList<Hotel> hotelList = FXCollections.observableArrayList(hotels);
-            tableView.setItems(hotelList);
-        } catch (SQLException | IOException e) {
+            ObservableList<Hotel> hoteles = FXCollections.observableArrayList(hotelDAO.getHotel());
+            tableView.setItems(hoteles);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
