@@ -26,5 +26,6 @@
             <Image url="@org/example/demo/pictures/ReservasTriana.png" />
          </image>
       </ImageView>
+      <Label fx:id="labelCorrect" layoutX="236.0" layoutY="52.0" textFill="#1bb700" />
    </children>
 </AnchorPane>

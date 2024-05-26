@@ -4,7 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.example.demo.model.dao.daoHotel.Hotel;
 import org.example.demo.model.dao.daoHotel.HotelDAO;
@@ -15,6 +17,7 @@ import java.sql.SQLException;
 
 public class AddHotelesView {
 
+    public Label labelCorrect;
     @FXML
     private TextField idField;
 
@@ -45,22 +48,25 @@ public class AddHotelesView {
     @FXML
     public void add() {
         try {
-            int id = Integer.parseInt(idField.getText());
-            String name = nameField.getText();
-            String roomType = roomTypeChoiceBox.getValue();
+            int idAlojamiento = Integer.parseInt(idField.getText());
+            String nombre = nameField.getText();
+            String tipoHabitacion = roomTypeChoiceBox.getValue();
             int stars = starsChoiceBox.getValue();
 
-            Hotel newHotel = new Hotel(id, name, roomType, stars);
+            Hotel newHotel = new Hotel(idAlojamiento, nombre, tipoHabitacion, stars);
             HotelDAO hotelDAO = new HotelDAOImpl();
             hotelDAO.insertHotel(newHotel);
 
-            hotelesViewController.updateTableView();
+            //hotelesViewController.updateTableView();
 
             // Close the current window
             Stage stage = (Stage) addButton.getScene().getWindow();
+            labelCorrect.setText("Tabla establecida");
             stage.close();
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
+
+    
 }
