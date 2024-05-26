@@ -48,8 +48,7 @@ CREATE TABLE HOTELES (
     Tipo_habitacion VARCHAR2(20) NOT NULL,
     Nombre VARCHAR2(30) NOT NULL,
     Numero_Estrellas NUMBER(1),
-    CONSTRAINT CK_2 CHECK (Numero_Estrellas IN (1, 2, 3, 4, 5)),
-    CONSTRAINT CK_3 CHECK (Tipo_habitacion IN ('Unica', 'Doble', 'Triple', 'Cuadruple'))
+    CONSTRAINT CK_2 CHECK (Numero_Estrellas IN (1, 2, 3, 4, 5))
 );
 --falta not null V
 --nombre de apartamento turistico V
