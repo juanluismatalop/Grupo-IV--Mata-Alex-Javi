@@ -11,48 +11,44 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class VentanaController {
-    public Button buttonCerrarSesion;
-    public Button buttonHoteles;
-    public Button buttonReservas;
-    public Button buttonApartamento;
+    @FXML
+    private Button buttonCerrarSesion;
+    @FXML
+    private Button buttonHoteles;
+    @FXML
+    private Button buttonReservas;
+    @FXML
+    private Button buttonApartamento;
+
     private Stage stage;
-    private Scene scene;
-    private Parent root;
+
+    // Método para cambiar la escena
+    private void changeScene(String fxmlFile, Button button) throws IOException {
+        stage = (Stage) button.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        System.out.println("Boton pulsado");
+    }
 
     @FXML
     public void buttonCerrarSesion(ActionEvent actionEvent) throws IOException {
-        stage = (Stage) buttonCerrarSesion.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("logInPrueba.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        System.out.println("Boton pulsado");
+        changeScene("logInPrueba.fxml", buttonCerrarSesion);
     }
+
     @FXML
     public void buttonHoteles(ActionEvent actionEvent) throws IOException {
-        stage = (Stage) buttonHoteles.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("Hoteles-view.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        System.out.println("Boton pulsado");
+        changeScene("Hoteles-view.fxml", buttonHoteles);
     }
+
     @FXML
     public void buttonReservas(ActionEvent actionEvent) throws IOException {
-        stage = (Stage) buttonReservas.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("Reservas-view.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        System.out.println("Boton pulsado");
+        changeScene("Reservas-view.fxml", buttonReservas);
     }
+
     @FXML
     public void buttonApartamento(ActionEvent actionEvent) throws IOException {
-        stage = (Stage) buttonApartamento.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("ApartamentosTuristicos-view.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        System.out.println("Boton pulsado");
+        changeScene("ApartamentosTuristicos-view.fxml", buttonApartamento);
     }
 }

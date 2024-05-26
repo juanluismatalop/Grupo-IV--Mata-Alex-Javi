@@ -95,9 +95,8 @@ public class AddHotelesView {
         } catch (IOException e) {
             labelError.setText("Error de IO: " + e.getMessage());
         } catch (Exception e) {
-            labelError.setText("Ocurrió un error: " + e.getMessage());
+            System.out.println("Ocurrió un error: " + e.getMessage());
         }
     }
 }
-
 
