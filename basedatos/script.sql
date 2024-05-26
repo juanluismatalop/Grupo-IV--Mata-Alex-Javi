@@ -3,11 +3,11 @@ PRAGMA foreig_key = on;
 --Telefono PRIMARY KEY V
 DROP TABLE IF EXISTS USUARIO;
 CREATE TABLE USUARIO (
-    Telefono NUMBER NOT NULL PRIMARY KEY,
-    Email VARCHAR2(50) NOT NULL,
-    Contrasenna VARCHAR2(50) NOT NULL,
-    NOMBRE_COMPLETO VARCHAR2(50) NOT NULL,
-    Direccion VARCHAR2(60)
+    Telefono NUMERIC NOT NULL PRIMARY KEY,
+    Email VARCHAR(50) NOT NULL,
+    Contrasenna VARCHAR(50) NOT NULL,
+    NOMBRE_COMPLETO VARCHAR(50) NOT NULL,
+    Direccion VARCHAR(60)
 );
 --falta not null V
 --id alojamiento autoincrementable V

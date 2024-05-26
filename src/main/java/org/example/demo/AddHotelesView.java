@@ -1,9 +1,7 @@
 package org.example.demo;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -13,9 +11,17 @@ import org.example.demo.model.dao.daoHotel.HotelDAOImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 public class AddHotelesView {
 
+    @FXML
+    private TextField tipoHabitacion;
+    @FXML
+    private Label labelError;
+    @FXML
+    private TextField numeroEstrellas;
     @FXML
     private Label labelCorrect;
     @FXML
@@ -23,19 +29,12 @@ public class AddHotelesView {
     @FXML
     private TextField nameField;
     @FXML
-    private ChoiceBox<String> roomTypeChoiceBox;
-    @FXML
-    private ChoiceBox<Integer> starsChoiceBox;
-    @FXML
     private Button addButton;
 
     private HotelesView hotelesViewController;
 
-    @FXML
-    public void initialize() {
-        roomTypeChoiceBox.setItems(FXCollections.observableArrayList("Unica", "Doble", "Triple", "Cuadruple"));
-        starsChoiceBox.setItems(FXCollections.observableArrayList(1, 2, 3, 4, 5));
-    }
+    private final List<String> validRoomTypes = Arrays.asList("Unica", "Doble", "Triple", "Cuadruple");
+    private final List<Integer> validStars = Arrays.asList(1, 2, 3, 4, 5);
 
     public void setHotelesViewController(HotelesView hotelesViewController) {
         this.hotelesViewController = hotelesViewController;
@@ -43,23 +42,32 @@ public class AddHotelesView {
 
     @FXML
     public void add() {
+        // Limpia los mensajes de error/correcto antes de comenzar
+        labelError.setText("");
+        labelCorrect.setText("");
+
         try {
             // Parse y valida los campos de entrada
             int idAlojamiento = Integer.parseInt(idField.getText());
-            String nombre = nameField.getText();
-            String tipo_habitacion = roomTypeChoiceBox.getValue();
-            Integer stars = starsChoiceBox.getValue();
+            String nombre = nameField.getText().trim();
+            String tipo_habitacion = tipoHabitacion.getText().trim();
+            int stars = Integer.parseInt(numeroEstrellas.getText());
 
-            if (nombre == null || tipo_habitacion == null || stars == null) {
-                labelCorrect.setText("Por favor, completa todos los campos.");
+            // Validar los campos de entrada
+            if (nombre.isEmpty() || tipo_habitacion.isEmpty()) {
+                labelError.setText("Por favor, completa todos los campos.");
                 return;
             }
 
-            // Imprimir los valores seleccionados para depuración
-            System.out.println("ID Alojamiento: " + idAlojamiento);
-            System.out.println("Nombre: " + nombre);
-            System.out.println("Tipo de habitación: " + tipo_habitacion);
-            System.out.println("Número de estrellas: " + stars);
+            if (!validRoomTypes.contains(tipo_habitacion)) {
+                labelError.setText("Tipo de habitación inválido. Debe ser 'Unica', 'Doble', 'Triple' o 'Cuadruple'.");
+                return;
+            }
+
+            if (!validStars.contains(stars)) {
+                labelError.setText("Número de estrellas inválido. Debe ser un valor entre 1 y 5.");
+                return;
+            }
 
             // Crea un nuevo objeto Hotel
             Hotel newHotel = new Hotel(idAlojamiento, nombre, tipo_habitacion, stars);
@@ -76,25 +84,20 @@ public class AddHotelesView {
             // Proporciona retroalimentación al usuario
             labelCorrect.setText("Hotel agregado exitosamente.");
 
-            // Cierra la ventana actual
+            // Cierra la ventana actual si se agregó exitosamente
             Stage stage = (Stage) addButton.getScene().getWindow();
             stage.close();
 
         } catch (NumberFormatException e) {
-            labelCorrect.setText("Formato de ID inválido.");
+            labelError.setText("Formato de ID o número de estrellas inválido.");
         } catch (SQLException e) {
-            // Manejo específico de la violación de la restricción CHECK
-            if (e.getMessage().contains("CHECK constraint failed: CK_3")) {
-                labelCorrect.setText("Tipo de habitación inválido. Debe ser 'Unica', 'Doble', 'Triple' o 'Cuadruple'.");
-            } else if (e.getMessage().contains("CHECK constraint failed: CK_2")) {
-                labelCorrect.setText("Número de estrellas inválido. Debe ser un valor entre 1 y 5.");
-            } else {
-                labelCorrect.setText("Error de base de datos: " + e.getMessage());
-            }
+            labelError.setText("Error de base de datos: " + e.getMessage());
         } catch (IOException e) {
-            labelCorrect.setText("Error de IO: " + e.getMessage());
+            labelError.setText("Error de IO: " + e.getMessage());
         } catch (Exception e) {
-            labelCorrect.setText("Ocurrió un error: " + e.getMessage());
+            labelError.setText("Ocurrió un error: " + e.getMessage());
         }
     }
 }
+
+
