@@ -48,6 +48,17 @@ public class AddReservasView {
             String fechaEntrada = fechaEntradaField.getText().trim();
             String fechaSalida = fechaSalidaField.getText().trim();
 
+            // Validar los campos de entrada
+            if (idField.getText().isEmpty() || !idField.getText().matches("\\d+")) {
+                labelError.setText("Por favor ingrese un ID válido.");
+                return;
+            }
+
+            if (telefonoField.getText().isEmpty() || !telefonoField.getText().matches("\\d{9}")) {
+                labelError.setText("Por favor ingrese un número de teléfono válido de 9 dígitos.");
+                return;
+            }
+
 
             // Crea un nuevo objeto Reserva
             Reservas newReserva = new Reservas(id, telefono, fechaEntrada, fechaSalida);
