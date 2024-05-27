@@ -52,10 +52,10 @@ public class AddApartamentoView {
             }
 
 
-            // Crea un nuevo objeto Hotel
+            // Crea un nuevo objeto Apartamento
             Apartamento newApartamento = new Apartamento(id, nombre, distanciaCentroKm);
 
-            // Inserta el nuevo hotel en la base de datos
+            // Inserta el nuevo Apartamento en la base de datos
             ApartamentoDAO apartamentoDAO = new ApartamentoDAOImpl();
             apartamentoDAO.insertApartamento(newApartamento);
 
