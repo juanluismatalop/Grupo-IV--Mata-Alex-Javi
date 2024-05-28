@@ -65,7 +65,7 @@ public class AddApartamentoView {
             }
 
             // Proporciona retroalimentación al usuario
-            labelCorrect.setText("Hotel agregado exitosamente.");
+            labelCorrect.setText("Apartamento turisticos agregado exitosamente.");
 
             // Cierra la ventana actual si se agregó exitosamente
             Stage stage = (Stage) addButton.getScene().getWindow();
