@@ -5,8 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.example.demo.model.dao.daoHotel.HotelDAO;
-import org.example.demo.model.dao.daoHotel.HotelDAOImpl;
 import org.example.demo.model.dao.daoReservas.DAOReservas;
 import org.example.demo.model.dao.daoReservas.DAOReservasImpl;
 

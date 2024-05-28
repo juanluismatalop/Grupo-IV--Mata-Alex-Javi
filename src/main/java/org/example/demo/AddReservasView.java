@@ -59,7 +59,6 @@ public class AddReservasView {
                 return;
             }
 
-
             // Crea un nuevo objeto Reserva
             Reservas newReserva = new Reservas(id, telefono, fechaEntrada, fechaSalida);
 

@@ -39,7 +39,7 @@
         </graphic>
     </Button>
     <Pane prefHeight="90.0" prefWidth="674.0" style="-fx-background-color: #DED6D5;">
-        <Label layoutX="238.0" layoutY="8.0" prefHeight="74.0" prefWidth="171.0" text="HOTELES">
+        <Label layoutX="218.0" layoutY="8.0" prefHeight="74.0" prefWidth="203.0" text="RESERVAS">
             <font>
                 <Font name="System Bold" size="38.0" />
             </font>
