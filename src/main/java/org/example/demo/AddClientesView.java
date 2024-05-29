@@ -51,14 +51,14 @@ public class AddClientesView {
             // Parse y valida los campos de entrada
             int telefono = Integer.parseInt(telefonoField.getText());
             String contrasenna = contrasennaField.getText().trim();
-            String funcion = funcionField.getText().trim();
             String direccion = direccionField.getText().trim();
             String email = emailField.getText().trim();
             String nombre = nombreField.getText().trim();
 
 
+
             // Crea un nuevo objeto Hotel
-            Usuario newUsuario = new Usuario(telefono, contrasenna, funcion, direccion, email, nombre);
+            Usuario newUsuario = new Usuario(telefono, email, contrasenna, nombre, direccion, "Clientes");
 
             // Inserta el nuevo hotel en la base de datos
             UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
@@ -77,7 +77,7 @@ public class AddClientesView {
             stage.close();
 
         } catch (NumberFormatException e) {
-            labelError.setText("Formato de ID o número de estrellas inválido.");
+            labelError.setText("Formato invalido.");
         } catch (SQLException e) {
             labelError.setText("Error de base de datos: " + e.getMessage());
         } catch (IOException e) {

@@ -99,7 +99,7 @@ public class ClientesView {
 
     @FXML
     public void buttonRemove(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RemoveClientes-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RemoveCliente.fxml"));
         Parent root = fxmlLoader.load();
         RemoveCliente removeCliente = fxmlLoader.getController();
         removeCliente.setClientesViewController(this);
