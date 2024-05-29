@@ -9,7 +9,7 @@ CREATE TABLE USUARIO (
     NOMBRE_COMPLETO VARCHAR(50) NOT NULL,
     Direccion VARCHAR(60),
     Funcion VARCHAR(20),
-    CONSTRAINT CK_0 CHECK(Funcion IN ("Administrador", "Clientes"))
+    CONSTRAINT CK_0 CHECK(Funcion IN ('Administrador', 'Clientes'))
 );
 --falta not null V
 --id alojamiento autoincrementable V
