@@ -19,6 +19,8 @@ public class VentanaController {
     private Button buttonReservas;
     @FXML
     private Button buttonApartamento;
+    @FXML
+    private Button buttonClientes;
 
     private Stage stage;
 
@@ -50,5 +52,10 @@ public class VentanaController {
     @FXML
     public void buttonApartamento(ActionEvent actionEvent) throws IOException {
         changeScene("ApartamentosTuristicos-view.fxml", buttonApartamento);
+    }
+
+    @FXML
+    public void buttonClientes(ActionEvent actionEvent) throws IOException {
+        changeScene("ClientesView.fxml", buttonClientes);
     }
 }
