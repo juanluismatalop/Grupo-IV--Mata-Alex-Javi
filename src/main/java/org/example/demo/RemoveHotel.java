@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class RemoveHotel {
+    private HotelesView hotelesViewController;
+    public void setHotelesViewController(HotelesView hotelesViewController) {
+        this.hotelesViewController = hotelesViewController;
+    }
 
     @FXML
     private TextField idField;

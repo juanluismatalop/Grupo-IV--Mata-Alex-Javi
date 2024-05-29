@@ -11,11 +11,11 @@
             <image>
                 <Image url="@org/example/demo/pictures/Madrid.jpg" />
             </image></ImageView>
-        <TableView layoutX="119.0" layoutY="113.0" prefHeight="306.0" prefWidth="517.0">
+        <TableView fx:id="tableView" layoutX="119.0" layoutY="113.0" prefHeight="306.0" prefWidth="517.0">
             <columns>
-                <TableColumn prefWidth="158.0" text="ID" />
-                <TableColumn prefWidth="179.0" text="Nombre" />
-                <TableColumn prefWidth="178.0" text="Distancia al centro" />
+                <TableColumn fx:id="columnIdAlojamientos" prefWidth="158.0" text="ID" />
+                <TableColumn fx:id="columnNombre" prefWidth="179.0" text="Nombre" />
+                <TableColumn fx:id="columnDistanciaCentroKm" prefWidth="178.0" text="Distancia al centro" />
             </columns>
         </TableView>
         <Button fx:id="buttonAdd" layoutX="31.0" layoutY="113.0" mnemonicParsing="false" onAction="#buttonAdd" prefHeight="46.0" prefWidth="32.0">
@@ -27,9 +27,9 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button layoutX="32.0" layoutY="197.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="54.0">
+        <Button layoutX="32.0" layoutY="197.0" mnemonicParsing="false" onAction="#buttonRemove" prefHeight="46.0" prefWidth="54.0">
             <graphic>
-                <ImageView fitHeight="61.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="61.0" fitWidth="33.0" onDragDetected="#buttonRemove" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@org/example/demo/pictures/eliminar.png" />
                     </image>

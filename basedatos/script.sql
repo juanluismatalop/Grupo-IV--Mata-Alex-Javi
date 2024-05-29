@@ -3,11 +3,13 @@ PRAGMA foreig_key = on;
 --Telefono PRIMARY KEY V
 DROP TABLE IF EXISTS USUARIO;
 CREATE TABLE USUARIO (
-    Telefono NUMBER NOT NULL PRIMARY KEY,
-    Email VARCHAR2(50) NOT NULL,
-    Contrasenna VARCHAR2(50) NOT NULL,
-    NOMBRE_COMPLETO VARCHAR2(50) NOT NULL,
-    Direccion VARCHAR2(60)
+    Telefono NUMERIC NOT NULL PRIMARY KEY,
+    Email VARCHAR(50) NOT NULL,
+    Contrasenna VARCHAR(50) NOT NULL,
+    NOMBRE_COMPLETO VARCHAR(50) NOT NULL,
+    Direccion VARCHAR(60),
+    Funcion VARCHAR(20),
+    CONSTRAINT CK_0 CHECK(Funcion IN ('Administrador', 'Clientes'))
 );
 --falta not null V
 --id alojamiento autoincrementable V
@@ -48,8 +50,7 @@ CREATE TABLE HOTELES (
     Tipo_habitacion VARCHAR2(20) NOT NULL,
     Nombre VARCHAR2(30) NOT NULL,
     Numero_Estrellas NUMBER(1),
-    CONSTRAINT CK_2 CHECK (Numero_Estrellas IN (1, 2, 3, 4, 5)),
-    CONSTRAINT CK_3 CHECK (Tipo_habitacion IN ('Unica', 'Doble', 'Triple', 'Cuadruple'))
+    CONSTRAINT CK_2 CHECK (Numero_Estrellas IN (1, 2, 3, 4, 5))
 );
 --falta not null V
 --nombre de apartamento turistico V

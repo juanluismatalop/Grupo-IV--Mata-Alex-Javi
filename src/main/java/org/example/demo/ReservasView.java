@@ -12,49 +12,52 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.example.demo.model.dao.daoApartamento.Apartamento;
-import org.example.demo.model.dao.daoApartamento.ApartamentoDAO;
-import org.example.demo.model.dao.daoApartamento.ApartamentoDAOImpl;
 
+import org.example.demo.model.dao.daoReservas.DAOReservas;
+import org.example.demo.model.dao.daoReservas.DAOReservasImpl;
+import org.example.demo.model.dao.daoReservas.Reservas;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-public class ApartamentosTuristicosView {
+public class ReservasView {
 
     public Button backButton;
     public Button buttonRemove;
     @FXML
-    private TableView<Apartamento> tableView;
+    private TableView<Reservas> tableView;
     @FXML
-    private TableColumn<Apartamento, Integer> columnIdAlojamientos;
+    private TableColumn<Reservas, Integer> columnIdAlojamientos;
     @FXML
-    private TableColumn<Apartamento, String> columnNombre;
+    private TableColumn<Reservas, Integer> columnTelefono;
     @FXML
-    private TableColumn<Apartamento, Double> columnDistanciaCentroKm;
+    private TableColumn<Reservas, String> columnFechaEntrada;
+    @FXML
+    private TableColumn<Reservas, String> columnFechaSalida;
 
-    private ApartamentoDAO apartamentoDAO;
+    private DAOReservas daoReservas;
     public Button buttonAdd;
 
     public void initialize() {
         try {
-            apartamentoDAO = new ApartamentoDAOImpl();
-        } catch (SQLException e) {
-            System.out.println("Hay un error");;
-        } catch (IOException e) {
-            System.out.println("Hay un error");;
+            daoReservas = new DAOReservasImpl();
+        } catch (SQLException | IOException e) {
+            System.out.println("Error al inicializar el DAO de Reservas");
+            e.printStackTrace();
         }
-        columnIdAlojamientos.setCellValueFactory(new PropertyValueFactory<>("idAlojamiento"));
-        columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columnDistanciaCentroKm.setCellValueFactory(new PropertyValueFactory<>("distanciaCentroKm"));
-        loadApartamentos();
+
+        columnIdAlojamientos.setCellValueFactory(new PropertyValueFactory<>("id_alojamiento"));
+        columnTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        columnFechaEntrada.setCellValueFactory(new PropertyValueFactory<>("fechaEntrada"));
+        columnFechaSalida.setCellValueFactory(new PropertyValueFactory<>("fechaSalida"));
+
+        loadReservas();
     }
 
-    private void loadApartamentos() {
+    private void loadReservas() {
         try {
-            ObservableList<Apartamento> apartamentos = FXCollections.observableArrayList(apartamentoDAO.getApartamento());
-            tableView.setItems(apartamentos);
+            ObservableList<Reservas> reservas = FXCollections.observableArrayList(daoReservas.getReserva());
+            tableView.setItems(reservas);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,14 +74,14 @@ public class ApartamentosTuristicosView {
 
     @FXML
     public void buttonAdd(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddApartamentos-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddReservas-view.fxml"));
         Parent root = fxmlLoader.load();
-        AddApartamentoView addApartamentoView = fxmlLoader.getController();
-        addApartamentoView.setApartamentosViewController(this);
+        AddReservasView addReservasView = fxmlLoader.getController();
+        addReservasView.setReservasViewController(this);
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle("Añadir Apartamento");
+        stage.setTitle("Añadir Reserva");
         Stage primaryStage = (Stage) backButton.getScene().getWindow();
         stage.initOwner(primaryStage);
         primaryStage.setOnCloseRequest(event -> stage.close());
@@ -86,17 +89,21 @@ public class ApartamentosTuristicosView {
     }
     @FXML
     public void buttonRemove(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RemoveApartamentos-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RemoveReservas-view.fxml"));
         Parent root = fxmlLoader.load();
-        RemoveApartamentosView removeApartamentosView = fxmlLoader.getController();
-        removeApartamentosView.setApartamentosViewController(this);
+        RemoveReservasView removeReservasView = fxmlLoader.getController();
+        removeReservasView.setReservasViewController(this);
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle("Añadir Apartamento");
+        stage.setTitle("Añadir Reserva");
         Stage primaryStage = (Stage) backButton.getScene().getWindow();
         stage.initOwner(primaryStage);
         primaryStage.setOnCloseRequest(event -> stage.close());
         stage.show();
+    }
+
+    public void updateTableView() {
+        loadReservas();
     }
 }
