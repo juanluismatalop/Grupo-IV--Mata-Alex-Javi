@@ -8,12 +8,10 @@ import javafx.stage.Stage;
 import org.example.demo.model.dao.daoReservas.Reservas;
 import org.example.demo.model.dao.daoReservas.DAOReservas;
 import org.example.demo.model.dao.daoReservas.DAOReservasImpl;
-
+import org.example.demo.model.dao.daoUsuario.UsuarioDAO;
+import org.example.demo.model.dao.daoUsuario.UsuarioDAOImpl;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-
 
 public class AddReservasView {
     @FXML
@@ -30,74 +28,46 @@ public class AddReservasView {
     private TextField fechaSalidaField;
     @FXML
     private Button addButton;
-
     private ReservasView reservasViewController;
-
     public void setReservasViewController(ReservasView reservasViewController) {
         this.reservasViewController = reservasViewController;
     }
-
     public void add() {
-        // Limpia los mensajes de error/correcto antes de comenzar
         labelError.setText("");
         labelCorrect.setText("");
-
         try {
-
-            // Validar los campos de entrada
+            // Validar el campo ID
             if (idField.getText().isEmpty() || !idField.getText().matches("\\d+")) {
                 labelError.setText("Por favor ingrese un ID válido.");
                 return;
             }
-
             String telefonoText = telefonoField.getText();
-            if (telefonoText.isEmpty()) {
-                // El campo de texto está vacío
-                labelError.setText("Por favor ingrese un número de teléfono.");
+            if (telefonoText.isEmpty() || !telefonoText.matches("\\d+")) {
+                labelError.setText("Por favor ingrese un número de teléfono válido.");
                 return;
             }
-
-            // Verificar si el texto contiene solo dígitos numéricos
-            if (!telefonoText.matches("\\d+")) {
-                // El texto no contiene solo dígitos numéricos
-                labelError.setText("Por favor ingrese solo números en el campo de teléfono.");
+            UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+            if (usuarioDAO.getTelefonoCliente(Integer.parseInt(telefonoText)) == null) {
+                labelError.setText("El número de teléfono no pertenece a ningún cliente.");
                 return;
             }
-
-
-            // Parse y valida los campos de entrada
             int id = Integer.parseInt(idField.getText());
-            int telefono = Integer.parseInt(telefonoField.getText());
+            int telefono = Integer.parseInt(telefonoText);
             String fechaEntrada = fechaEntradaField.getText().trim();
             String fechaSalida = fechaSalidaField.getText().trim();
-
-
-
-            // Crea un nuevo objeto Reserva
             Reservas newReserva = new Reservas(id, telefono, fechaEntrada, fechaSalida);
-
-            // Inserta el nuevo Reserva en la base de datos
             DAOReservas daoReservas = new DAOReservasImpl();
             daoReservas.insertReserva(newReserva);
-
-            // Actualiza la vista de la tabla en el controlador principal
             if (reservasViewController != null) {
                 reservasViewController.updateTableView();
             }
-
-            // Proporciona retroalimentación al usuario
             labelCorrect.setText("Reserva agregada exitosamente.");
-
-            // Limpiar los campos
             idField.clear();
             telefonoField.clear();
             fechaEntradaField.clear();
             fechaSalidaField.clear();
-
-            // Cierra la ventana actual si se agregó exitosamente
             Stage stage = (Stage) addButton.getScene().getWindow();
             stage.close();
-
         } catch (NumberFormatException e) {
             labelError.setText("Formato de ID o teléfono inválido.");
         } catch (SQLException e) {
@@ -108,5 +78,5 @@ public class AddReservasView {
             labelError.setText("Ocurrió un error: " + e.getMessage());
         }
     }
-
 }
+

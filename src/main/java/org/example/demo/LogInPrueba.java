@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class LogInPrueba {
-    //implementacion de UsuarioDao
     private UsuarioDAOImpl usuarioDaoImp = new UsuarioDAOImpl();
     private Stage stage;
     private Scene scene;
@@ -28,10 +27,8 @@ public class LogInPrueba {
     private Button buttonSubmit;
     @FXML
     private Button buttonRegister;
-
     public LogInPrueba() throws SQLException, IOException {
     }
-
     @FXML
     public void onClick(ActionEvent actionEvent) throws IOException, SQLException {
         System.out.println("pulsado boton");
@@ -47,13 +44,11 @@ public class LogInPrueba {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } else{
+        } else {
             labelUserError.setText("Usuario incorrecto");
 
         }
     }
-    //crear clase que nos recorra todos los usuarios con usuarioDao.getUsuario() y que lo compare
-    // con el usuario y contrasenna introducidos para iniciar sesion;
     private static boolean comprobarUsuarioYContrasenna(String nombreCompleto, String contrasenna) throws SQLException, IOException {
         UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
         System.out.println(usuarioDAO.getUsuarioByNombreANDContrasenna(nombreCompleto, contrasenna));
@@ -63,7 +58,6 @@ public class LogInPrueba {
             return false;
 
     }
-
     public void buttonRegis(ActionEvent actionEvent) throws IOException {
         stage = (Stage) buttonRegister.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("registerPrueba.fxml"));

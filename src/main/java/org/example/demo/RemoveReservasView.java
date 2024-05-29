@@ -12,18 +12,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class RemoveReservasView {
-
     private ReservasView reservasViewController;
     public void setReservasViewController(ReservasView reservasViewController) {
         this.reservasViewController = reservasViewController;
     }
-
     @FXML
     private TextField idField;
-
     @FXML
     private TextField telefonoField;
-
     @FXML
     public void delete(ActionEvent actionEvent) {
         try {
@@ -31,7 +27,6 @@ public class RemoveReservasView {
             int telefono = Integer.parseInt(telefonoField.getText());
             DAOReservas daoReservas = new DAOReservasImpl();
             boolean success = daoReservas.deleteReservaPorTelefonoEIdAlojamiento(id, telefono);
-
             Alert alert;
             if (success) {
                 alert = new Alert(Alert.AlertType.INFORMATION);
@@ -44,10 +39,7 @@ public class RemoveReservasView {
                 alert.setHeaderText(null);
                 alert.setContentText("No se encontró el Reserva con el ID proporcionado.");
             }
-
             alert.showAndWait();
-
-            // Close the current window
             Stage stage = (Stage) idField.getScene().getWindow();
             stage.close();
         } catch (NumberFormatException e) {

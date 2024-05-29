@@ -16,10 +16,8 @@ public class RemoveHotel {
     public void setHotelesViewController(HotelesView hotelesViewController) {
         this.hotelesViewController = hotelesViewController;
     }
-
     @FXML
     private TextField idField;
-
     @FXML
     public void delete(ActionEvent actionEvent) {
         try {

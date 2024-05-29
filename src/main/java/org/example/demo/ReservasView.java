@@ -53,7 +53,6 @@ public class ReservasView {
 
         loadReservas();
     }
-
     private void loadReservas() {
         try {
             ObservableList<Reservas> reservas = FXCollections.observableArrayList(daoReservas.getReserva());
@@ -62,7 +61,6 @@ public class ReservasView {
             e.printStackTrace();
         }
     }
-
     @FXML
     public void back(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
@@ -71,14 +69,12 @@ public class ReservasView {
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML
     public void buttonAdd(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddReservas-view.fxml"));
         Parent root = fxmlLoader.load();
         AddReservasView addReservasView = fxmlLoader.getController();
         addReservasView.setReservasViewController(this);
-
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("Añadir Reserva");
@@ -93,7 +89,6 @@ public class ReservasView {
         Parent root = fxmlLoader.load();
         RemoveReservasView removeReservasView = fxmlLoader.getController();
         removeReservasView.setReservasViewController(this);
-
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("Añadir Reserva");
@@ -102,7 +97,6 @@ public class ReservasView {
         primaryStage.setOnCloseRequest(event -> stage.close());
         stage.show();
     }
-
     public void updateTableView() {
         loadReservas();
     }

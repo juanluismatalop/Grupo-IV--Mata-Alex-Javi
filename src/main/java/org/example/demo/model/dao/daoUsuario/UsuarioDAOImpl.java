@@ -175,6 +175,24 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         return usuario;
     }
 
+    @Override
+    public Usuario getTelefonoCliente(int Telefono) throws SQLException {
+        String sql = "SELECT Telefono FROM USUSARIO WHERE Telefono = ? AND Funcion = 'Cliente';";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,Telefono);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Usuario usuario = null;
+        while (resultSet.next()){
+            String Email = resultSet.getString("Email");
+            String Contrasenna = resultSet.getString("Contrasenna");
+            String NOMBRE_COMPLETO = resultSet.getString("NOMBRE_COMPLETO");
+            String Direccion = resultSet.getString("Direccion");
+            String Funcion = resultSet.getString("Funcion");
+            usuario = new Usuario(Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion, Funcion);
+        }
+        return usuario;
+    }
+
     public static void main(String[] args) {
         try {
             UsuarioDAO usuarioDAO = new UsuarioDAOImpl();

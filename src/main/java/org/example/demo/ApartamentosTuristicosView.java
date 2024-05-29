@@ -22,7 +22,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ApartamentosTuristicosView {
-
     public Button backButton;
     public Button buttonRemove;
     @FXML
@@ -33,10 +32,8 @@ public class ApartamentosTuristicosView {
     private TableColumn<Apartamento, String> columnNombre;
     @FXML
     private TableColumn<Apartamento, Double> columnDistanciaCentroKm;
-
     private ApartamentoDAO apartamentoDAO;
     public Button buttonAdd;
-
     public void initialize() {
         try {
             apartamentoDAO = new ApartamentoDAOImpl();
@@ -50,7 +47,6 @@ public class ApartamentosTuristicosView {
         columnDistanciaCentroKm.setCellValueFactory(new PropertyValueFactory<>("distanciaCentroKm"));
         loadApartamentos();
     }
-
     private void loadApartamentos() {
         try {
             ObservableList<Apartamento> apartamentos = FXCollections.observableArrayList(apartamentoDAO.getApartamento());
@@ -68,7 +64,6 @@ public class ApartamentosTuristicosView {
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML
     public void buttonAdd(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddApartamentos-view.fxml"));

@@ -1,5 +1,4 @@
 package org.example.demo;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,9 +17,6 @@ import org.example.demo.model.dao.daoHotel.HotelDAOImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
-
-
 public class HotelesView {
     public Button backButton;
     public Button buttonRemove;
@@ -103,7 +99,6 @@ public class HotelesView {
         primaryStage.setOnCloseRequest(event -> stage.close());
         stage.show();
     }
-
 }
 
 

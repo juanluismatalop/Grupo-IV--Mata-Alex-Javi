@@ -57,4 +57,5 @@ public interface UsuarioDAO {
     boolean getUsuarioByNombreANDContrasenna(String nombreCompleto, String contrasenna) throws SQLException;
 
     List<Usuario> getUsuariosFuncionClientes() throws SQLException;
+    Usuario getTelefonoCliente(int Telefono) throws SQLException;
 }

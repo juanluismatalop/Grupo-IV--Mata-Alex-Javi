@@ -12,22 +12,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class RemoveApartamentosView {
-
     private ApartamentosTuristicosView apartamentosTuristicosViewController;
     public void setApartamentosViewController(ApartamentosTuristicosView apartamentosTuristicosViewController) {
         this.apartamentosTuristicosViewController = apartamentosTuristicosViewController;
     }
-
     @FXML
     private TextField idField;
-
     @FXML
     public void delete(ActionEvent actionEvent) {
         try {
             int id = Integer.parseInt(idField.getText());
             ApartamentoDAO apartamentoDAO = new ApartamentoDAOImpl();
             boolean success = apartamentoDAO.deleteApartamentoPorID(id);
-
             Alert alert;
             if (success) {
                 alert = new Alert(Alert.AlertType.INFORMATION);
@@ -40,10 +36,7 @@ public class RemoveApartamentosView {
                 alert.setHeaderText(null);
                 alert.setContentText("No se encontró el apartamento con el ID proporcionado.");
             }
-
             alert.showAndWait();
-
-            // Close the current window
             Stage stage = (Stage) idField.getScene().getWindow();
             stage.close();
         } catch (NumberFormatException e) {
