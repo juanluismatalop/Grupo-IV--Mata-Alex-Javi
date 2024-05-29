@@ -48,6 +48,8 @@ public class AddClientesView {
         labelCorrect.setText("");
 
         try {
+
+
             // Parse y valida los campos de entrada
             int telefono = Integer.parseInt(telefonoField.getText());
             String contrasenna = contrasennaField.getText().trim();
@@ -55,6 +57,32 @@ public class AddClientesView {
             String email = emailField.getText().trim();
             String nombre = nombreField.getText().trim();
 
+            if (!esTelefonoValido(String.valueOf(telefono))) {
+                labelError.setText("El teléfono debe tener 9 caracteres numéricos");
+                return;
+            }
+
+            // Validating email
+            if (!esCorreoValido(email)) {
+                labelError.setText("El correo debe tener una @");
+                return;
+            }
+
+            // Validating password
+            if (!esContrasennaValida(contrasenna)) {
+                labelError.setText("La contraseña debe tener 8 caracteres, una mayúscula, un punto o coma y un número");
+                return;
+            }
+
+            if (nombre.isEmpty()) {
+                labelError.setText("Por favor, completa el campo de nombre.");
+                return;
+            }
+
+            if (direccion.isEmpty()) {
+                labelError.setText("Por favor, completa el campo de direccion.");
+                return;
+            }
 
 
             // Crea un nuevo objeto Hotel
@@ -85,6 +113,22 @@ public class AddClientesView {
         } catch (Exception e) {
             System.out.println("Ocurrió un error: " + e.getMessage());
         }
+    }
+
+    private static boolean esTelefonoValido(String sTelefono) {
+        return sTelefono.matches("\\d{9}");
+    }
+    private static boolean esCorreoValido(String correoElectronico) {
+        return correoElectronico.contains("@");
+    }
+    private static boolean esContrasennaValida(String contrasenna) {
+        if (contrasenna.length() < 8) {
+            return false;
+        }
+        boolean tieneMayuscula = contrasenna.matches(".*[A-Z].*");
+        boolean tienePuntoOComa = contrasenna.matches(".*[.,].*");
+        boolean tieneDigito = contrasenna.matches(".*\\d.*");
+        return tieneMayuscula && tienePuntoOComa && tieneDigito;
     }
 }
 

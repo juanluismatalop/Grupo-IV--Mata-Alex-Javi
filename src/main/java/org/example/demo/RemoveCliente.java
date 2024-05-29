@@ -41,7 +41,7 @@ public class RemoveCliente {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);
-                alert.setContentText("No se encontró el apartamento con el ID proporcionado.");
+                alert.setContentText("No se encontró el usuario con el telefono proporcionado.");
             }
 
             alert.showAndWait();
@@ -53,7 +53,7 @@ public class RemoveCliente {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Por favor, ingrese un ID válido.");
+            alert.setContentText("Por favor, ingrese un telefono válido.");
             alert.showAndWait();
         } catch (SQLException e) {
             e.printStackTrace();
