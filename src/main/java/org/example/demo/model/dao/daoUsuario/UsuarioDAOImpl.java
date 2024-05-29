@@ -1,6 +1,9 @@
 package org.example.demo.model.dao.daoUsuario;
 
 import org.example.demo.model.SetUpConnection;
+import org.example.demo.model.dao.daoReservas.DAOReservas;
+import org.example.demo.model.dao.daoReservas.DAOReservasImpl;
+import org.example.demo.model.dao.daoReservas.Reservas;
 
 import java.io.IOException;
 import java.sql.*;
@@ -170,5 +173,24 @@ public class UsuarioDAOImpl implements UsuarioDAO{
             usuario.add(usuario1);
         }
         return usuario;
+    }
+
+    public static void main(String[] args) {
+        try {
+            UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+            Usuario usuario;
+            System.out.println("se muestras los usuarios");
+            System.out.println(usuarioDAO.getUsuario());
+            System.out.println("añadimos un usuario");
+            usuario = new Usuario(678543123, "hola@gmail.com", "Holahola2.", "Pepe", "Jaen", "Administrador");
+            usuarioDAO.insertUsuario(usuario);
+            System.out.println("Introducido correctamente");
+            System.out.println(usuarioDAO.getUsuario());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

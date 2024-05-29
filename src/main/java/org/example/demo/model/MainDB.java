@@ -8,11 +8,11 @@ import java.sql.SQLException;
 public class MainDB {
 
     public static void main(String[] args) {
-        try {
-            UsuarioDB usuarioDB = new UsuarioDB();
-
-            Usuario usuario = new Usuario(675949983, "franciscoperez@gmail.com",
-                    "pepe123", "Francisco Perez Gomez", "CalleMariola");
+//        try {
+//            UsuarioDB usuarioDB = new UsuarioDB();
+//
+//            Usuario usuario = new Usuario(675949983, "franciscoperez@gmail.com",
+//                    "pepe123", "Francisco Perez Gomez", "CalleMariola");
 
 //            boolean insertSuccess = usuarioDB.insertUsuario(usuario);
 //            System.out.printf("Insercción correcta: %B%n", insertSuccess);
@@ -37,12 +37,12 @@ public class MainDB {
 //
 //            Usuario usuario1 = usuarioDB.getMobileByTelefonoEnhaced(928271910);
 //            System.out.println(usuario1);
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+  }
 }
