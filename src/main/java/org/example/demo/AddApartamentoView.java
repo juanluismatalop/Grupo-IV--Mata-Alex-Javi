@@ -51,6 +51,11 @@ public class AddApartamentoView {
                 return;
             }
 
+            if (distanciaCentroKm <= 0 ) {
+                labelError.setText("La distancia al centro debe ser un número positivo.");
+                return;
+            }
+
 
             // Crea un nuevo objeto Apartamento
             Apartamento newApartamento = new Apartamento(id, nombre, distanciaCentroKm);

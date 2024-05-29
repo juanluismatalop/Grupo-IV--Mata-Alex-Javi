@@ -23,8 +23,6 @@ public class AddClientesView {
     @FXML
     private Label labelCorrect;
     @FXML
-    private TextField funcionField;
-    @FXML
     private TextField direccionField;
     @FXML
     private TextField emailField;
