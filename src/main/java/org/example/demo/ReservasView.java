@@ -41,15 +41,16 @@ public class ReservasView {
     public void initialize() {
         try {
             daoReservas = new DAOReservasImpl();
-        } catch (SQLException e) {
-            System.out.println("Hay un error");;
-        } catch (IOException e) {
-            System.out.println("Hay un error");;
+        } catch (SQLException | IOException e) {
+            System.out.println("Error al inicializar el DAO de Reservas");
+            e.printStackTrace();
         }
-        columnIdAlojamientos.setCellValueFactory(new PropertyValueFactory<>("idAlojamiento"));
+
+        columnIdAlojamientos.setCellValueFactory(new PropertyValueFactory<>("id_alojamiento"));
         columnTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         columnFechaEntrada.setCellValueFactory(new PropertyValueFactory<>("fechaEntrada"));
         columnFechaSalida.setCellValueFactory(new PropertyValueFactory<>("fechaSalida"));
+
         loadReservas();
     }
 
