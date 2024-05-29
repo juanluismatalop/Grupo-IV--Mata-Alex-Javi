@@ -179,7 +179,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         try {
             UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
             Usuario usuario;
-            System.out.println("se muestras los usuarios");
+            System.out.println("se muestras los usuariosa");
             System.out.println(usuarioDAO.getUsuario());
             System.out.println("añadimos un usuario");
             usuario = new Usuario(678543123, "hola@gmail.com", "Holahola2.", "Pepe", "Jaen", "Administrador");
