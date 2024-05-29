@@ -37,23 +37,33 @@ public class AddReservasView {
         this.reservasViewController = reservasViewController;
     }
 
-    @FXML
     public void add() {
         // Limpia los mensajes de error/correcto antes de comenzar
         labelError.setText("");
         labelCorrect.setText("");
 
         try {
+
             // Validar los campos de entrada
             if (idField.getText().isEmpty() || !idField.getText().matches("\\d+")) {
                 labelError.setText("Por favor ingrese un ID válido.");
                 return;
             }
 
-            if (telefonoField.getText().isEmpty() || !telefonoField.getText().matches("\\d{9}")) {
-                labelError.setText("Por favor ingrese un número de teléfono válido de 9 dígitos.");
+            String telefonoText = telefonoField.getText();
+            if (telefonoText.isEmpty()) {
+                // El campo de texto está vacío
+                labelError.setText("Por favor ingrese un número de teléfono.");
                 return;
             }
+
+            // Verificar si el texto contiene solo dígitos numéricos
+            if (!telefonoText.matches("\\d+")) {
+                // El texto no contiene solo dígitos numéricos
+                labelError.setText("Por favor ingrese solo números en el campo de teléfono.");
+                return;
+            }
+
 
             // Parse y valida los campos de entrada
             int id = Integer.parseInt(idField.getText());
@@ -61,16 +71,7 @@ public class AddReservasView {
             String fechaEntrada = fechaEntradaField.getText().trim();
             String fechaSalida = fechaSalidaField.getText().trim();
 
-            // Validar las fechas
-            if (fechaEntrada.isEmpty() || !isValidDate(fechaEntrada)) {
-                labelError.setText("Por favor ingrese una fecha de entrada válida en formato YYYY-MM-DD.");
-                return;
-            }
 
-            if (fechaSalida.isEmpty() || !isValidDate(fechaSalida)) {
-                labelError.setText("Por favor ingrese una fecha de salida válida en formato YYYY-MM-DD.");
-                return;
-            }
 
             // Crea un nuevo objeto Reserva
             Reservas newReserva = new Reservas(id, telefono, fechaEntrada, fechaSalida);
@@ -108,13 +109,4 @@ public class AddReservasView {
         }
     }
 
-    private boolean isValidDate(String dateStr) {
-        // Método para validar la fecha en formato YYYY-MM-DD
-        try {
-            LocalDate.parse(dateStr);
-            return true;
-        } catch (DateTimeParseException e) {
-            return false;
-        }
-    }
 }

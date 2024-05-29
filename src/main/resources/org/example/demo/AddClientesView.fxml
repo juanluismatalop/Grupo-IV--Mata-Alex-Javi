@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.demo.AddClientesView"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.AddClientesView">
+    <children>
+        <Button fx:id="add" layoutX="274.0" layoutY="361.0" mnemonicParsing="false" onAction="#add" text="Añadir" />
+        <TextField fx:id="telefonoField" layoutX="177.0" layoutY="80.0" prefHeight="26.0" prefWidth="281.0" />
+        <TextField fx:id="contrasennaField" layoutX="175.0" layoutY="179.0" prefHeight="26.0" prefWidth="282.0" />
+        <Label layoutX="15.0" layoutY="93.0" text="Telefono" />
+        <Label layoutX="14.0" layoutY="139.0" text="Email" />
+        <Label layoutX="13.0" layoutY="192.0" text="Contraseña" />
+        <Label layoutX="14.0" layoutY="235.0" text="Nombre" />
+        <Label layoutX="14.0" layoutY="273.0" text="Direccion" />
+        <Label layoutX="190.0" layoutY="14.0" text="Añadir Cliente">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="142.0" fitWidth="120.0" layoutX="480.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@org/example/demo/pictures/ReservasTriana.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="labelCorrect" layoutX="236.0" layoutY="52.0" textFill="#1bb700" />
+        <TextField fx:id="direccionField" layoutX="175.0" layoutY="269.0" prefHeight="25.0" prefWidth="282.0" />
+        <TextField fx:id="emailField" layoutX="176.0" layoutY="126.0" prefHeight="26.0" prefWidth="282.0" />
+        <TextField fx:id="nombreField" layoutX="175.0" layoutY="222.0" prefHeight="26.0" prefWidth="282.0" />
+        <Label fx:id="labelError" layoutX="22.0" layoutY="289.0" textFill="RED" />
+    </children>
 </AnchorPane>
