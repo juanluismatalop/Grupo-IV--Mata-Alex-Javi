@@ -82,7 +82,7 @@ public class RegisterPrueba {
             }
 
             // Inserting user into the database
-            Usuario usuario = new Usuario(telefono, correoElectronico, contrasenna, nombreCompleto, direccion);
+            Usuario usuario = new Usuario(telefono, correoElectronico, contrasenna, nombreCompleto, direccion, "Administrador");
             usuarioDAO.insertUsuario(usuario);
 
             // Loading next scene

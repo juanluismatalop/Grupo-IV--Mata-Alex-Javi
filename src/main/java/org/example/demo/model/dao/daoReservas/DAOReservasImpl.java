@@ -37,9 +37,9 @@ public class DAOReservasImpl implements DAOReservas {
      * @throws SQLException Si ocurre un error al acceder a la base de datos.
      */
     @Override
-    public List<Reservas> getReservaPorTelefonoEId() throws SQLException {
+    public List<Reservas> getReserva() throws SQLException {
         List<Reservas> reservas = new ArrayList<>();
-        String sql = "SELECT * FROM RESERVAS;";
+        String sql = "SELECT * FROM RESERVA;";
         statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
         while (resultSet.next()) {
@@ -61,7 +61,7 @@ public class DAOReservasImpl implements DAOReservas {
      * @throws SQLException Si ocurre un error al acceder a la base de datos.
      */
     @Override
-    public Reservas getReservaPorTelefonoEId(Reservas reservas) throws SQLException {
+    public Reservas getReserva(Reservas reservas) throws SQLException {
         String sql = "SELECT * FROM RESERVAS WHERE Id_Alojamiento = ? AND Telefono = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, reservas.getId_alojamiento());
@@ -86,7 +86,7 @@ public class DAOReservasImpl implements DAOReservas {
      */
     @Override
     public boolean insertReserva(Reservas reserva) throws SQLException {
-        String sql = "INSERT INTO RESERVAS (Id_Alojamientos, Telefono, Fecha_Entrada, Fecha_Sañida) VALUES (?, ?, ?, ?);";
+        String sql = "INSERT INTO RESERVA (Id_Alojamiento, Telefono, Fecha_Entrada, Fecha_Salida) VALUES (?, ?, ?, ?);";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, reserva.getId_alojamiento());
         preparedStatement.setInt(2, reserva.getTelefono());
@@ -106,7 +106,7 @@ public class DAOReservasImpl implements DAOReservas {
      */
     @Override
     public boolean deleteReservaPorTelefonoEIdAlojamiento(int telefono, int idAlojamiento) throws SQLException {
-        String sql = "DELETE FROM RESERVAS WHERE Id_Alojamiento = ? AND Telefono = ?;";
+        String sql = "DELETE FROM RESERVA WHERE Id_Alojamiento = ? AND Telefono = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, idAlojamiento);
         preparedStatement.setInt(2, telefono);
@@ -123,7 +123,7 @@ public class DAOReservasImpl implements DAOReservas {
      */
     @Override
     public boolean updateReserva(Reservas reserva) throws SQLException {
-        String sql = "UPDATE RESERVAS SET Id_Alojamiento = ?, Telefono = ?, Fecha_Entrada = ?, Fecha_Salida = ?;";
+        String sql = "UPDATE RESERVA SET Id_Alojamiento = ?, Telefono = ?, Fecha_Entrada = ?, Fecha_Salida = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, reserva.getId_alojamiento());
         preparedStatement.setInt(2, reserva.getTelefono());
@@ -131,6 +131,25 @@ public class DAOReservasImpl implements DAOReservas {
         preparedStatement.setString(4, reserva.getFechaSalida());
         int rowsUpdated = preparedStatement.executeUpdate();
         return rowsUpdated > 0;
+    }
+
+    public static void main(String[] args) {
+        try {
+            DAOReservas daoReservas = new DAOReservasImpl();
+            Reservas reservas;
+            System.out.println("se muestras las Reservas");
+            System.out.println(daoReservas.getReserva());
+            System.out.println("añadimos una reserva");
+            reservas = new Reservas(111, 608085402, "12/03/23", "14/03/23");
+            daoReservas.insertReserva(reservas);
+            System.out.println("Introducido correctamente");
+            System.out.println(daoReservas.getReserva());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
 

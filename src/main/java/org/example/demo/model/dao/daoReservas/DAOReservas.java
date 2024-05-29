@@ -17,7 +17,7 @@ public interface DAOReservas {
      * @return Una lista de objetos Reservas.
      * @throws SQLException Si ocurre un error al acceder a la base de datos.
      */
-    List<Reservas> getReservaPorTelefonoEId() throws SQLException;
+    List<Reservas> getReserva() throws SQLException;
 
     /**
      * Obtiene una reserva por teléfono y ID de alojamiento.
@@ -26,7 +26,7 @@ public interface DAOReservas {
      * @return La reserva encontrada, o null si no se encuentra.
      * @throws SQLException Si ocurre un error al acceder a la base de datos.
      */
-    Reservas getReservaPorTelefonoEId(Reservas reserva) throws SQLException;
+    Reservas getReserva(Reservas reserva) throws SQLException;
 
     /**
      * Inserta una nueva reserva en la base de datos.

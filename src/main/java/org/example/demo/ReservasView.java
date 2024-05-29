@@ -55,7 +55,7 @@ public class ReservasView {
 
     private void loadReservas() {
         try {
-            ObservableList<Reservas> reservas = FXCollections.observableArrayList(daoReservas.getReservaPorTelefonoEId());
+            ObservableList<Reservas> reservas = FXCollections.observableArrayList(daoReservas.getReserva());
             tableView.setItems(reservas);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -100,5 +100,9 @@ public class ReservasView {
         stage.initOwner(primaryStage);
         primaryStage.setOnCloseRequest(event -> stage.close());
         stage.show();
+    }
+
+    public void updateTableView() {
+        loadReservas();
     }
 }

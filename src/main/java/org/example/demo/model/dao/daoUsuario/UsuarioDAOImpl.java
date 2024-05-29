@@ -44,7 +44,8 @@ public class UsuarioDAOImpl implements UsuarioDAO{
             String Contrasenna = resultSet.getString("Contrasenna");
             String NOMBRE_COMPLETO = resultSet.getString("NOMBRE_COMPLETO");
             String Direccion = resultSet.getString("Direccion");
-            usuario1 = new Usuario(Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion);
+            String Funcion = resultSet.getString("Funcion");
+            usuario1 = new Usuario(Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion, Funcion);
             usuario.add(usuario1);
         }
         return usuario;
@@ -67,7 +68,8 @@ public class UsuarioDAOImpl implements UsuarioDAO{
             String Contrasenna = resultSet.getString("Contrasenna");
             String NOMBRE_COMPLETO = resultSet.getString("NOMBRE_COMPLETO");
             String Direccion = resultSet.getString("Direccion");
-            usuario = new Usuario(Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion);
+            String Funcion = resultSet.getString("Funcion");
+            usuario = new Usuario(Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion, Funcion);
         }
         return usuario;
     }
@@ -79,13 +81,14 @@ public class UsuarioDAOImpl implements UsuarioDAO{
      */
     @Override
     public boolean insertUsuario(Usuario usuario) throws SQLException {
-        String sql = "INSERT INTO USUARIO (Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO USUARIO (Telefono, Email, Contrasenna, NOMBRE_COMPLETO, Direccion, Funcion) VALUES (?, ?, ?, ?, ?, ?);";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, usuario.getTelefono());
         preparedStatement.setString(2, usuario.getEmail());
         preparedStatement.setString(3, usuario.getContrasenna());
         preparedStatement.setString(4, usuario.getNOMBRE_COMPLETO());
         preparedStatement.setString(5, usuario.getDireccion());
+        preparedStatement.setString(6, usuario.getFuncion());
         int rowsInserted = preparedStatement.executeUpdate();
         return rowsInserted > 0;
     }
@@ -111,7 +114,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
      */
     @Override
     public boolean updateUsuario(Usuario usuario) throws SQLException {
-        String sql = "UPDATE USUARIO SET Telefono = ?, Email = ?, Contrasenna = ?, NOMBRE_COMPLETO = ?, Direccion = ? WHERE Telefono = ?;";
+        String sql = "UPDATE USUARIO SET Telefono = ?, Email = ?, Contrasenna = ?, NOMBRE_COMPLETO = ?, Direccion = ?, Funcion = ? WHERE Telefono = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, usuario.getTelefono());
         preparedStatement.setString(2, usuario.getEmail());
@@ -141,7 +144,8 @@ public class UsuarioDAOImpl implements UsuarioDAO{
             int Telefono = resultSet.getInt("Telefono");
             String Email = resultSet.getString("Email");
             String Direccion = resultSet.getString("Direccion");
-            usuario = new Usuario(Telefono, Email, contrasenna, nombreCompleto, Direccion);
+            String Funcion = resultSet.getString("Funcion");
+            usuario = new Usuario(Telefono, Email, contrasenna, nombreCompleto, Direccion, Funcion);
             return true;
 
         }
