@@ -17,7 +17,7 @@
       </Pane>
       <Button fx:id="buttonHoteles" mnemonicParsing="false" onAction="#buttonHoteles" text="Hoteles" />
       <Button fx:id="buttonReservas" layoutX="76.0" mnemonicParsing="false" onAction="#buttonReservas" text="Reservas" />
-      <Button fx:id="buttonApartamento" layoutX="154.0" mnemonicParsing="false" text="Apartamentos Turisticos" />
+      <Button fx:id="buttonApartamento" layoutX="154.0" mnemonicParsing="false" onAction="#buttonApartamento" text="Apartamentos Turisticos" />
       <Pane layoutY="52.0" prefHeight="355.0" prefWidth="600.0">
           <ImageView fitHeight="355.0" fitWidth="471.0" layoutX="98.0" pickOnBounds="true" preserveRatio="true">
               <image>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.AddReservasView">
+    <children>
+        <Button fx:id="add" layoutX="274.0" layoutY="361.0" mnemonicParsing="false" onAction="#add" text="Añadir" />
+        <TextField fx:id="idField" layoutX="175.0" layoutY="101.0" prefHeight="26.0" prefWidth="281.0" />
+        <TextField fx:id="telefonoField" layoutX="175.0" layoutY="188.0" prefHeight="26.0" prefWidth="282.0" />
+        <TextField fx:id="fechaEntradaField" layoutX="174.0" layoutY="147.0" prefHeight="26.0" prefWidth="282.0" />
+        <TextField fx:id="fechaSalidaField" layoutX="175.0" layoutY="230.0" prefHeight="26.0" prefWidth="282.0" />
+        <Label layoutX="14.0" layoutY="106.0" text="Id Hotel" />
+        <Label layoutX="14.0" layoutY="152.0" text="Telefono" />
+        <Label layoutX="14.0" layoutY="193.0" text="Fecha Entrada" />
+        <Label layoutX="14.0" layoutY="235.0" text="Fecha Salida" />
+        <Label layoutX="190.0" layoutY="14.0" text="Añadir Reserva">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="142.0" fitWidth="120.0" layoutX="480.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@org/example/demo/pictures/ReservasTriana.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="labelCorrect" layoutX="236.0" layoutY="52.0" textFill="#1bb700" />
+        <Label fx:id="labelError" layoutX="22.0" layoutY="289.0" textFill="RED" />
+    </children>
+</AnchorPane>

@@ -19,23 +19,27 @@ import java.sql.SQLException;
 
 public class RegisterPrueba {
     private UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+    @FXML
     public PasswordField textContrasenna;
+    @FXML
     public TextField textNombreCompleto;
+    @FXML
     public TextField textTelefono;
+    @FXML
     public TextField textCorreoElectronico;
+    @FXML
     public TextField textDireccion;
+    @FXML
     public Label errorContraseña;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    /*@FXML
-    private TextField textNombreCompleto, textCorreoElectronico, textDireccion, textContrasenna, textTelefono;*/
     @FXML
     private Label labelRegistroError;
     @FXML
     private Button buttonRegister;
     @FXML
     private Button buttonAtras;
+    private Stage stage;
+    private Parent root;
+    private Scene scene;
 
     public RegisterPrueba() throws SQLException, IOException {
     }
@@ -44,58 +48,74 @@ public class RegisterPrueba {
     public void onClick(ActionEvent actionEvent) throws IOException {
         String nombreCompleto = textNombreCompleto.getText();
         String sTelefono = textTelefono.getText();
-        System.out.println("telefono: " + sTelefono);
-        System.out.println(sTelefono.equals(""));
-        //int telefono = Integer.parseInt(sTelefono);
         String correoElectronico = textCorreoElectronico.getText();
         String direccion = textDireccion.getText();
         String contrasenna = textContrasenna.getText();
 
-        //si todos los camnos estan rellenos pasamos a ventana-view si no nos saldra un error de campos incorrectos
-        if (nombreCompleto.equals("")||sTelefono.equals("")||correoElectronico.equals("")||direccion.equals("")||contrasenna.equals(""))
+        // Validating if any fields are empty
+        if (nombreCompleto.isEmpty() || sTelefono.isEmpty() || correoElectronico.isEmpty() || direccion.isEmpty() || contrasenna.isEmpty()) {
             labelRegistroError.setText("Faltan campos por rellenar");
-        else {
+            return;
+        }
 
-            try {
-                int telefono = Integer.parseInt(sTelefono);
-                if (esTelefonoValido(sTelefono) == false){
-                    textTelefono.setText("Deben ser 9 caracteres numericos");
-                    textTelefono.requestFocus();
-                } else if (esCorreoValido(correoElectronico) == false) {
-                    textCorreoElectronico.setText("El correo debe tener una @");
-                    textContrasenna.requestFocus();
-                } else if (esContrasennaValida(contrasenna) == false) {
-                    errorContraseña.setText("La contraseña debe tener 8 caracteres una mayuscula un . o , y un numero");
-                } else {
-                    Usuario usuario = new Usuario(telefono, correoElectronico, contrasenna, nombreCompleto, direccion);
-                    usuarioDAO.insertUsuario(usuario);
-                    stage = (Stage) buttonRegister.getScene().getWindow();
-                    root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                }
-
-
-            } catch (NumberFormatException e) {
-                textTelefono.setText("Deben ser caracteres numericos");
+        try {
+            // Validating phone number
+            int telefono = Integer.parseInt(sTelefono);
+            if (!esTelefonoValido(sTelefono)) {
+                labelRegistroError.setText("El teléfono debe tener 9 caracteres numéricos");
                 textTelefono.requestFocus();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+                return;
             }
 
+            // Validating email
+            if (!esCorreoValido(correoElectronico)) {
+                labelRegistroError.setText("El correo debe tener una @");
+                textCorreoElectronico.requestFocus();
+                return;
+            }
+
+            // Validating password
+            if (!esContrasennaValida(contrasenna)) {
+                errorContraseña.setText("La contraseña debe tener 8 caracteres, una mayúscula, un punto o coma y un número");
+                textContrasenna.requestFocus();
+                return;
+            }
+
+            // Inserting user into the database
+            Usuario usuario = new Usuario(telefono, correoElectronico, contrasenna, nombreCompleto, direccion);
+            usuarioDAO.insertUsuario(usuario);
+
+            // Loading next scene
+            stage = (Stage) buttonRegister.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("ventana-view.fxml"));
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (NumberFormatException e) {
+            labelRegistroError.setText("El teléfono debe ser numérico");
+            textTelefono.requestFocus();
+        } catch (SQLException e) {
+            if (e.getMessage().contains("SQLITE_CONSTRAINT_PRIMARYKEY")) {
+                labelRegistroError.setText("El teléfono ya está registrado");
+                textTelefono.requestFocus();
+            } else {
+                labelRegistroError.setText("Error de base de datos: " + e.getMessage());
+            }
+        } catch (IOException e) {
+            labelRegistroError.setText("Error al cargar la siguiente ventana");
         }
     }
+
     private static boolean esTelefonoValido(String sTelefono) {
-        // Usar expresión regular para verificar si la cadena contiene exactamente 9 dígitos
         return sTelefono.matches("\\d{9}");
     }
-    private static boolean esCorreoValido(String sTelefono) {
-        // Verificar si la cadena contiene el carácter '@'
-        return sTelefono.contains("@");
+
+    private static boolean esCorreoValido(String correoElectronico) {
+        return correoElectronico.contains("@");
     }
+
     private static boolean esContrasennaValida(String contrasenna) {
-        // Verificar que la longitud sea al menos 8
         if (contrasenna.length() < 8) {
             return false;
         }
@@ -104,6 +124,8 @@ public class RegisterPrueba {
         boolean tieneDigito = contrasenna.matches(".*\\d.*");
         return tieneMayuscula && tienePuntoOComa && tieneDigito;
     }
+
+    @FXML
     public void buttonAtras(ActionEvent actionEvent) throws IOException {
         stage = (Stage) buttonAtras.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("logInPrueba.fxml"));
@@ -112,3 +134,4 @@ public class RegisterPrueba {
         stage.show();
     }
 }
+
